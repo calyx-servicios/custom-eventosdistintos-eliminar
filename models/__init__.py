@@ -5,3 +5,4 @@
 
 from . import calendar
 from . import lead
+from . import res_partner

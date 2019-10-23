@@ -28,16 +28,17 @@
     'summary': '''Eventos Distintos Customization''',
     'depends': [
         'base',
-        #'web_calendar',
         'calendar',
         'crm'
     ],
     'external_dependencies': {
     },
     'data': [
+        'data/ir_sequence_data.xml',
         'view/calendar_view.xml',
         'view/lead_view.xml',
         'view/color_view.xml',
+        'view/res_partner_view.xml',
     ],
     'demo': [
     ],
