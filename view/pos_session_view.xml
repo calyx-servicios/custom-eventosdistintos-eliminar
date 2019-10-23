@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<odoo>      
+     <record id="view_pos_session_form_ed" model="ir.ui.view">
+        <field name="name">pos.session.form.ed</field>
+        <field name="model">pos.session</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_session_form" />
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+        <field name="state" position="before">
+            <field name="make_visible" invisible="1"/>
+        </field>
+        <xpath expr="//group[@class='oe_subtotal_footer oe_right']" position="replace">
+            <group class="oe_subtotal_footer oe_right">
+                
+                    <label for="cash_register_total_entry_encoding" attrs="{'invisible' : [('make_visible','=',False)]}" string="+ Transactions" class="oe_force_bold oe_opening_total" />
+                
+                    <field name="cash_register_total_entry_encoding" nolabel="1" attrs="{'invisible' : [('make_visible','=',False)]}" class="oe_bold oe_pos_total" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                
+                    <label for="cash_register_balance_end" attrs="{'invisible' : [('make_visible','=',False)]}" string="= Theoretical Closing Balance" class="oe_force_bold oe_opening_total" />
+                
+                    <field name="cash_register_balance_end" nolabel="1" attrs="{'invisible' : [('make_visible','=',False)]}" class="oe_bold oe_pos_total" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                
+            </group>
+        </xpath>
+        <xpath expr="//sheet/separator" position="replace">
+            <separator string="Summary by Payment Methods" attrs="{'invisible' : ['|',('state', '=', 'opening_control'),('make_visible','=',False)]}"/>
+        </xpath>
+        <xpath expr="//field[@name='statement_ids']" position="attributes">
+                <attribute name="attrs">{'invisible' : ['|',('state', '=', 'opening_control'),('make_visible','=',False)]}</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='cash_register_balance_end_real']" position="attributes">
+            <attribute name="attrs">{'invisible': ['|','|', ('cash_control', '=', False), ('state', '=', 'opening_control'),('make_visible','=',False)]}</attribute>
+         </xpath>
+        <xpath expr="//field[@name='cash_register_difference']" position="attributes">
+            <attribute name="attrs">{'invisible': ['|','|', ('cash_control', '=', False), ('state', '=', 'opening_control'),('make_visible','=',False)]}</attribute>
+         </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -29,7 +29,8 @@
     'depends': [
         'base',
         'calendar',
-        'crm'
+        'crm',
+        'point_of_sale'
     ],
     'external_dependencies': {
     },
@@ -39,6 +40,7 @@
         'view/lead_view.xml',
         'view/color_view.xml',
         'view/res_partner_view.xml',
+        'view/pos_session_view.xml',
     ],
     'demo': [
     ],
