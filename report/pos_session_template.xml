@@ -37,7 +37,7 @@
 <template id="report_pos_session_document">
     <t t-call="custom_ed.external_layout">
     
-    <div class="page"  style="min-width: 240px;max-width:250px;font-size: 10px !important;">
+    <div class="page"  style="min-width: 240px;max-width:250px;font-size: 8px !important;">
 
    
         <div  style="min-width: 240px;max-width:250px;">
@@ -72,7 +72,7 @@
             <br />
             <br/>
        
-            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 10px;">
                 START:
                 <right>
                 <span t-esc='receipt.cash_register_balance_start' t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
@@ -81,7 +81,7 @@
             <br/>
 
             
-            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 10px;">
                 TRANSACTIONS:
                 <right>
                 <span t-esc='receipt.cash_register_total_entry_encoding' t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
@@ -90,7 +90,7 @@
             <br/>
 
 
-            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 10px;">
                 DIFFERENCE:
                 <right>
                 <span t-esc='receipt.cash_register_difference' t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
@@ -99,7 +99,7 @@
             <br/>
 
 
-            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 10px;">
                 END:
                 <right>
                 <t t-esc='receipt.cash_register_balance_end' t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
@@ -108,7 +108,7 @@
             <br/>
             <br/>
 
-            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 10px;">
                 PAYMENT METHODS:
             </div>
             <br/>
@@ -122,7 +122,7 @@
             <br/> 
             <br/> 
             <t t-if='receipt.get_cashbox_lines()'>   
-            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 10px;">
                 BILLS COUNT:
             </div>
             <br/> 
@@ -138,7 +138,7 @@
             <br/> 
             <br/> 
             <t t-if='receipt.get_journal_invoices()'>   
-            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 10px;">
                 INVOICES:
             </div>
             <br/> 
@@ -154,7 +154,7 @@
             </t>
 
             <t t-if='receipt.get_customers_created()'>   
-            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 10px;">
                 CUSTOMERS CREATED:
             </div>
             <br/> 
@@ -169,7 +169,7 @@
             <br/> 
             </t>
 
-            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 10px;">
                 PRODUCTS:
             </div>
             <br/> 
