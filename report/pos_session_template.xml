@@ -70,22 +70,10 @@
                 </t>
             </div>
             <br />
-
-            <!-- <line class='total' size='double-height'>
-                <left><pre>ORDERS</pre></left>
-            </line>
-            <div class='cashier'>
-                <t t-foreach='receipt.order_ids' t-as='line'>
-                    <t t-esc='line.name' />
-                    <t t-esc='line.amount_total' />
-                    <br/> 
-                </t>
-            </div> -->
-
-
+            <br/>
        
-            <div class='cashier' style="min-width: 180px;max-width:180px;">
-                <left><pre>START</pre></left>
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+                START:
                 <right>
                 <span t-esc='receipt.cash_register_balance_start' t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
                 </right>
@@ -93,8 +81,8 @@
             <br/>
 
             
-            <div class='cashier' style="min-width: 180px;max-width:180px;">
-                <left><pre>TRANSACTIONS</pre></left>
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+                TRANSACTIONS:
                 <right>
                 <span t-esc='receipt.cash_register_total_entry_encoding' t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
                 </right>
@@ -102,8 +90,8 @@
             <br/>
 
 
-            <div class='cashier' style="min-width: 180px;max-width:180px;">
-                <left><pre>DIFFERENCE</pre></left>
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+                DIFFERENCE:
                 <right>
                 <span t-esc='receipt.cash_register_difference' t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
                 </right>
@@ -111,15 +99,19 @@
             <br/>
 
 
-            <div class='cashier' style="min-width: 180px;max-width:180px;">
-                <left><pre>END</pre></left>
-                <right><value t-att-value-decimals='2'><t t-esc='receipt.cash_register_balance_end' /></value></right>
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+                END:
+                <right>
+                <t t-esc='receipt.cash_register_balance_end' t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
+                </right>
             </div>
             <br/>
+            <br/>
 
-            <div class='cashier' style="min-width: 180px;max-width:180px;">
-                <left><pre>PAYMENT METHODS</pre></left>
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+                PAYMENT METHODS:
             </div>
+            <br/>
             <div class='cashier' style="min-width: 180px;max-width:200px;">
                 <t t-foreach='receipt.statement_ids' t-as='line'>
                     <span t-field="line.journal_id.name" />
@@ -127,11 +119,13 @@
                     <br/> 
                 </t>
             </div>
-
+            <br/> 
+            <br/> 
             <t t-if='receipt.get_cashbox_lines()'>   
-            <div class='cashier' style="min-width: 180px;max-width:180px;">
-                <left><pre>BILLS COUNT</pre></left>
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+                BILLS COUNT:
             </div>
+            <br/> 
             <div class='cashier' style="min-width: 180px;max-width:200px;">
                 <t t-foreach='receipt.get_cashbox_lines()' t-as='line'>
                     <t t-esc="line['coin_name']" /> x
@@ -141,10 +135,13 @@
                 </t>
             </div>
             </t>
+            <br/> 
+            <br/> 
             <t t-if='receipt.get_journal_invoices()'>   
-            <div class='cashier' style="min-width: 180px;max-width:180px;">
-                <left><pre>INVOICES</pre></left>
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+                INVOICES:
             </div>
+            <br/> 
             <div class='cashier' style="min-width: 180px;max-width:180px;">
                 <t t-foreach='receipt.get_journal_invoices()' t-as='line'>
                     <t t-esc="line['journal_name']" />
@@ -152,14 +149,15 @@
                     <br/> 
                 </t>
             </div>
-            
+            <br/> 
             <br/> 
             </t>
 
             <t t-if='receipt.get_customers_created()'>   
-            <div class='cashier' style="min-width: 180px;max-width:180px;">
-                <left><pre>CUSTOMERS CREATED</pre></left>
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+                CUSTOMERS CREATED:
             </div>
+            <br/> 
             <div class='cashier' style="min-width: 180px;max-width:180px;">
                 <t t-foreach='receipt.get_customers_created()' t-as='line'>
                     <t t-esc="line['partner_name']" />
@@ -168,11 +166,13 @@
             </div>
             
             <br/> 
+            <br/> 
             </t>
 
-            <div class='cashier' style="min-width: 180px;max-width:180px;">
-                <left><pre>PRODUCTS</pre></left>
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 12px;">
+                PRODUCTS:
             </div>
+            <br/> 
            <div class='cashier' style="min-width: 180px;max-width:180px;">
                 <t t-foreach='receipt.get_products_sold()' t-as='line'>
                     <t t-esc="line['product_name']" />
