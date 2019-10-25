@@ -41,6 +41,11 @@
         'view/color_view.xml',
         'view/res_partner_view.xml',
         'view/pos_session_view.xml',
+        'report/paperformat.xml',
+        'report/pos_report.xml',
+        'report/pos_template.xml',
+        'report/pos_session_report.xml',
+        'report/pos_session_template.xml',
     ],
     'demo': [
     ],

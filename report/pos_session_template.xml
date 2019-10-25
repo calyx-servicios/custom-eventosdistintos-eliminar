@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+<template id="external_layout_standard">
+        <div class="header">
+           
+        </div>
+
+        <div class="article o_report_layout_standard">
+            <t t-raw="0" />
+        </div>
+
+        <div class="footer">
+            
+        </div>
+    </template>
+
+<template id="external_layout">
+        <!-- Multicompany -->
+        <t t-if="not o and doc">
+            <t t-set="o" t-value="doc"/>
+        </t>
+
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id.sudo()"/>
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company"/>
+        </t>
+
+        <t t-call="custom_ed.external_layout_standard"><t t-raw="0"/></t>
+        
+    </template>
+
+<template id="report_pos_session_document">
+    <t t-call="custom_ed.external_layout">
+    
+    <div class="page"  style="min-width: 240px;max-width:250px;font-size: 10px !important;">
+
+   
+        <div  style="min-width: 240px;max-width:250px;">
+            <div class="pos-receipt-container">
+            <div class="pos-sale-ticket">
+            <div class='cashier'>
+                
+                <t t-if='receipt.user_id.company_id.phone'>
+                    <div>Tel:<t t-esc='receipt.user_id.company_id.phone' /></div>
+                </t>
+                <t t-if='receipt.user_id.company_id.vat'>
+                    <div>VAT:<t t-esc='receipt.user_id.company_id.vat' /></div>
+                </t>
+                <t t-if='receipt.user_id.company_id.email'>
+                    <div><t t-esc='receipt.user_id.company_id.email' /></div>
+                </t>
+                <t t-if='receipt.user_id.company_id.website'>
+                    <div><t t-esc='receipt.user_id.company_id.website' /></div>
+                </t>
+                <br />
+                <div><t t-esc='receipt.name' /></div>
+                <br />
+                
+                <t t-if='receipt.user_id'>
+                    <div class='cashier'>
+                        <div>--------------------------------</div>
+                        <div>Served by <t t-esc='receipt.user_id.name' /></div>
+                        <div><t t-esc='receipt.start_at' /></div>
+                    </div>
+                </t>
+            </div>
+            <br />
+
+            <!-- <line class='total' size='double-height'>
+                <left><pre>ORDERS</pre></left>
+            </line>
+            <div class='cashier'>
+                <t t-foreach='receipt.order_ids' t-as='line'>
+                    <t t-esc='line.name' />
+                    <t t-esc='line.amount_total' />
+                    <br/> 
+                </t>
+            </div> -->
+
+
+       
+            <div class='cashier' style="min-width: 180px;max-width:180px;">
+                <left><pre>START</pre></left>
+                <right>
+                <span t-esc='receipt.cash_register_balance_start' t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
+                </right>
+            </div>
+            <br/>
+
+            
+            <div class='cashier' style="min-width: 180px;max-width:180px;">
+                <left><pre>TRANSACTIONS</pre></left>
+                <right>
+                <span t-esc='receipt.cash_register_total_entry_encoding' t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
+                </right>
+            </div>
+            <br/>
+
+
+            <div class='cashier' style="min-width: 180px;max-width:180px;">
+                <left><pre>DIFFERENCE</pre></left>
+                <right>
+                <span t-esc='receipt.cash_register_difference' t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
+                </right>
+            </div>
+            <br/>
+
+
+            <div class='cashier' style="min-width: 180px;max-width:180px;">
+                <left><pre>END</pre></left>
+                <right><value t-att-value-decimals='2'><t t-esc='receipt.cash_register_balance_end' /></value></right>
+            </div>
+            <br/>
+
+            <div class='cashier' style="min-width: 180px;max-width:180px;">
+                <left><pre>PAYMENT METHODS</pre></left>
+            </div>
+            <div class='cashier' style="min-width: 180px;max-width:200px;">
+                <t t-foreach='receipt.statement_ids' t-as='line'>
+                    <span t-field="line.journal_id.name" />
+                    <span t-field="line.balance_end" t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
+                    <br/> 
+                </t>
+            </div>
+
+            <t t-if='receipt.get_cashbox_lines()'>   
+            <div class='cashier' style="min-width: 180px;max-width:180px;">
+                <left><pre>BILLS COUNT</pre></left>
+            </div>
+            <div class='cashier' style="min-width: 180px;max-width:200px;">
+                <t t-foreach='receipt.get_cashbox_lines()' t-as='line'>
+                    <t t-esc="line['coin_name']" /> x
+                    <t t-esc="line['qty']" /> :
+                    <span t-esc="line['subtotal']" t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
+                    <br/> 
+                </t>
+            </div>
+            </t>
+            <t t-if='receipt.get_journal_invoices()'>   
+            <div class='cashier' style="min-width: 180px;max-width:180px;">
+                <left><pre>INVOICES</pre></left>
+            </div>
+            <div class='cashier' style="min-width: 180px;max-width:180px;">
+                <t t-foreach='receipt.get_journal_invoices()' t-as='line'>
+                    <t t-esc="line['journal_name']" />
+                    <span t-esc="line['amount']" t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
+                    <br/> 
+                </t>
+            </div>
+            
+            <br/> 
+            </t>
+
+            <t t-if='receipt.get_customers_created()'>   
+            <div class='cashier' style="min-width: 180px;max-width:180px;">
+                <left><pre>CUSTOMERS CREATED</pre></left>
+            </div>
+            <div class='cashier' style="min-width: 180px;max-width:180px;">
+                <t t-foreach='receipt.get_customers_created()' t-as='line'>
+                    <t t-esc="line['partner_name']" />
+                    <br/> 
+                </t>
+            </div>
+            
+            <br/> 
+            </t>
+
+            <div class='cashier' style="min-width: 180px;max-width:180px;">
+                <left><pre>PRODUCTS</pre></left>
+            </div>
+           <div class='cashier' style="min-width: 180px;max-width:180px;">
+                <t t-foreach='receipt.get_products_sold()' t-as='line'>
+                    <t t-esc="line['product_name']" />
+                    <t t-esc="line['qty']" />
+                    <br/> 
+                </t>
+            </div>
+            
+            <br/> 
+
+            
+            
+            
+
+            <div class='after-footer' />
+
+            <br/>
+            <div font='b'>
+                <div>--------------------------------</div>
+                <div><t t-esc='receipt.stop_at' /></div>
+            </div>
+            </div>
+            </div>
+        </div>
+    
+    
+    </div>
+    </t>
+    </template>
+
+
+<template id="report_pos_session">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="receipt">
+            <t t-call="custom_ed.report_pos_session_document" />
+        </t>
+    </t>
+</template>
+
+
+
+</odoo>
