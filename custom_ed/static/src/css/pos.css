@@ -1,0 +1,29 @@
+/* --- Fonts --- */
+
+@font-face{
+    font-family: 'Inconsolata';
+    src: url(../fonts/Inconsolata.otf);
+}
+
+
+.pos .pos-session-ticket {
+    width: 250px;
+    max-width:250px;
+    font-size: 8px;
+}
+.pos .pos-session-ticket pre{
+    font-family: "Inconsolata";
+}
+.pos .pos-session-ticket .emph{
+    font-size: 20px;
+    margin:5px;
+}
+.pos .pos-session-ticket table {
+    width: 100%;
+    border: 0;
+    table-layout: fixed;
+}
+.pos .pos-session-ticket table td {
+    border: 0;
+    word-wrap: break-word;
+}
