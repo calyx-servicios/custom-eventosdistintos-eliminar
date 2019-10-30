@@ -91,7 +91,7 @@ class ResPartner(models.Model):
             args = []
         
         if name:
-            number=None
+            number=0
             try:
                 number=int(name)
             except:
