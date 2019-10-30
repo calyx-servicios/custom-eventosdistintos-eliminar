@@ -30,4 +30,4 @@ class Meeting(models.Model):
 	_inherit = 'calendar.event'
 	location = fields.Many2one('calendar.event.location', 'Location', states={'done': [('readonly', True)]}, track_visibility='onchange', help="Location of Event")
 	calendar_id = fields.Many2one('calendar.calendar', 'Calendar', states={'done': [('readonly', True)]}, track_visibility='onchange', help="Calendar of Event")
-	calendar_color = fields.Integer('Color',related='calendar_id.color')
+	calendar_color = fields.Integer('Calendar',related='calendar_id.color')

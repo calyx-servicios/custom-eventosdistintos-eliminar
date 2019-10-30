@@ -25,7 +25,7 @@
     'author': "Calyx",
     'website': 'www.calyxservicios.com.ar',
     'license': 'AGPL-3',
-    'summary': '''Eventos Distintos Customization''',
+    'summary': '''Eventos Distintos Customization 1.0''',
     'depends': [
         'base',
         'calendar',
@@ -46,6 +46,7 @@
         'report/pos_template.xml',
         'report/pos_session_report.xml',
         'report/pos_session_template.xml',
+        #'web.xml',
     ],
     'demo': [
     ],
