@@ -20,6 +20,7 @@ class AccountPaymentTerm(models.Model):
     @api.one
     def compute(self, value, date_ref=False):
         date_ref = date_ref or fields.Date.today()
+        
         amount = value
         result = []
         if self.env.context.get('currency_id'):
@@ -49,16 +50,16 @@ class AccountPaymentTerm(models.Model):
                     amount -= amt
             
         else:
-            
+            date_ref = fields.Date.today()
             for i in range(self.plan_split):
                 next_date = fields.Date.from_string(date_ref)
                 amt = currency.round(value / self.plan_split)
-                next_date += relativedelta(day=self.plan_day, months=i)
+                next_date += relativedelta(day=self.plan_day, months=i+1)
+                if i==self.plan_split-1:
+                    amount = sum(amt for _, amt in result)
+                    dist = currency.round(value - amount)
+                    amt =dist
                 result.append((fields.Date.to_string(next_date), amt))
-        amount = sum(amt for _, amt in result)
-        dist = currency.round(value - amount)
-        if dist:
-            last_date = result and result[-1][0] or fields.Date.today()
-            result.append((last_date, dist))
+
 
         return result

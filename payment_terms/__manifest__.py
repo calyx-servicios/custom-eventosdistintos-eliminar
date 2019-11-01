@@ -34,6 +34,8 @@
     },
     'data': [
         'view/account_view.xml',
+        'report/partner_report.xml',
+        'report/partner_template.xml',
     ],
     'demo': [
     ],
