@@ -24,9 +24,9 @@ class ResPartner(models.Model):
                 self.id),
             ('account_id.internal_type', '=',
                 account_internal_type),
-            ('account_id.reconcile', '=', True),
-            ('reconciled', '=', False),
-            ('full_reconcile_id', '=', False),
+            #('account_id.reconcile', '=', True),
+            #('reconciled', '=', False),
+            #('full_reconcile_id', '=', False),
             ('move_id', '=', move_id),
             ('company_id', '=', self.company_id.id),
             
