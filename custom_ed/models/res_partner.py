@@ -103,5 +103,8 @@ class ResPartner(models.Model):
             else:               
                 code_domain = self.make_domain('name',name)
                 return self.search(code_domain + args, limit=limit).name_get()
+        else:
+            code_domain = self.make_domain('name','')
+            return self.search(code_domain + args, limit=limit).name_get()
 
     
