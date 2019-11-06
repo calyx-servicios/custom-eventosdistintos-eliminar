@@ -1,4 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_pos_transfer,pos.transfer,model_pos_transfer,point_of_sale.group_pos_user,1,1,1,1
+access_pos_transfer,pos.transfer,model_pos_transfer,group_pos_user,1,1,1,1
 access_calendar_event_location,calendar.event.location,model_calendar_event_location,base.group_user,1,1,1,1
 access_calendar_calendar,calendar.calendar,model_calendar_calendar,base.group_user,1,1,1,1
