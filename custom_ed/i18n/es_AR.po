@@ -1,0 +1,345 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* custom_ed
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-06 12:56+0000\n"
+"PO-Revision-Date: 2019-11-06 12:56+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: custom_ed
+#: code:addons/custom_ed/models/ir_ui_view.py:117
+#, python-format
+msgid " - %r in %s=%r"
+msgstr " - %r in %s=%r"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.view_pos_session_form_ed
+msgid "+ Transactions"
+msgstr "+ Transacciones"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.view_pos_config_kanban_ed
+msgid "<span>Cash Balance</span>"
+msgstr "<span>Balance de Caja</span>"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.view_pos_config_kanban_ed
+msgid "<span>Last Closing Date</span>"
+msgstr "<span>Última Fecha de Cierre</span>"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.view_pos_session_form_ed
+msgid "= Theoretical Closing Balance"
+msgstr "= Saldo teórico de cierre"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_session_document
+msgid "BILLS COUNT:"
+msgstr "BILLETES:"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_document
+msgid "CHANGE"
+msgstr "CAMBIO"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_session_document
+msgid "CUSTOMERS CREATED:"
+msgstr "CLIENTES CREADOS:"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_calendar_event_calendar_color
+#: model:ir.model.fields,field_description:custom_ed.field_calendar_event_calendar_id
+#: model:ir.model.fields,field_description:custom_ed.field_crm_lead_calendar_id
+#: model:ir.ui.view,arch_db:custom_ed.calendar_calendar_form_view
+#: model:ir.ui.view,arch_db:custom_ed.calendar_calendar_tree_view
+#: model:ir.ui.view,arch_db:custom_ed.view_calendar_event_search_inherit
+msgid "Calendar"
+msgstr "Calendario"
+
+#. module: custom_ed
+#: model:ir.model.fields,help:custom_ed.field_calendar_event_calendar_id
+msgid "Calendar of Event"
+msgstr "Calendario del Evento"
+
+#. module: custom_ed
+#: model:ir.model.fields,help:custom_ed.field_crm_lead_calendar_id
+msgid "Calendar of Oportunity"
+msgstr "Calendario de Oportunidad"
+
+#. module: custom_ed
+#: model:ir.actions.act_window,name:custom_ed.open_view_calendar_calendar
+#: model:ir.ui.menu,name:custom_ed.menu_calendar_calendar
+msgid "Calendars"
+msgstr "Calendarios"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.view_pos_config_kanban_ed
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: custom_ed
+#: model:ir.model,name:custom_ed.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_pos_transfer_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_pos_transfer_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_session_document
+msgid "DIFFERENCE:"
+msgstr "DIFERENCIA:"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_pos_transfer_destiny_id
+msgid "Destiny Table"
+msgstr "Mesa Destino"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_document
+msgid "Discount:"
+msgstr "Descuento:"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_pos_transfer_display_name
+msgid "Display Name"
+msgstr "Mostrar Nombre"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_session_document
+msgid "END:"
+msgstr "CIERRE:"
+
+#. module: custom_ed
+#: model:ir.model,name:custom_ed.model_calendar_event
+msgid "Event"
+msgstr "Evento"
+
+#. module: custom_ed
+#: code:addons/custom_ed/models/ir_ui_view.py:116
+#, python-format
+msgid "Field %r used in attributes must be present in view but is missing:"
+msgstr "Field %r used in attributes must be present in view but is missing:"
+
+#. module: custom_ed
+#: code:addons/custom_ed/models/ir_ui_view.py:110
+#, python-format
+msgid "Field `%(field_name)s` does not exist"
+msgstr "Field `%(field_name)s` does not exist"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_pos_transfer_id
+msgid "ID"
+msgstr "ID"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_session_document
+msgid "INVOICES:"
+msgstr "FACTURACION:"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_pos_transfer___last_update
+msgid "Last Modified on"
+msgstr "Última Modificación en"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_pos_transfer_write_uid
+msgid "Last Updated by"
+msgstr "Última Actualización por"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_pos_transfer_write_date
+msgid "Last Updated on"
+msgstr "Última Actualización el"
+
+#. module: custom_ed
+#: model:ir.model,name:custom_ed.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Iniciativa/Oportunidad"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_crm_lead_location
+#: model:ir.ui.view,arch_db:custom_ed.view_calendar_event_search_inherit
+msgid "Location"
+msgstr "Ubicación"
+
+#. module: custom_ed
+#: model:ir.model.fields,help:custom_ed.field_crm_lead_location
+msgid "Location of Oportunity"
+msgstr "Ubicacion de la Oportunidad"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.view_calendar_event_calendar_inherit
+msgid "Meetings"
+msgstr "Reuniones"
+
+#. module: custom_ed
+#: code:addons/custom_ed/models/ir_ui_view.py:57
+#: code:addons/custom_ed/models/ir_ui_view.py:153
+#, python-format
+msgid "Model not found: %(model)s"
+msgstr "Model not found: %(model)s"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.view_pos_config_kanban_ed
+msgid "New Session"
+msgstr "Nueva Sesión"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.view_pos_config_kanban_ed
+msgid "Open Session"
+msgstr "Abrir Sesión"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_pos_transfer_order_id
+msgid "Order"
+msgstr "Orden"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_session_document
+msgid "PAYMENT METHODS:"
+msgstr "Metodos de Pago:"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_session_document
+msgid "PRODUCTS:"
+msgstr "Productos:"
+
+#. module: custom_ed
+#: model:ir.model,name:custom_ed.model_pos_order
+msgid "Point of Sale Orders"
+msgstr "Pedidos del Punto de Venta"
+
+#. module: custom_ed
+#: model:ir.actions.report,name:custom_ed.action_report_pos_order
+#: model:ir.actions.report,name:custom_ed.action_report_pos_session
+msgid "Print Report"
+msgstr "Imprimir Reporte"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.view_pos_config_kanban_ed
+msgid "Resume"
+msgstr "Reanudar"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_session_document
+msgid "START:"
+msgstr "INICIO:"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_res_partner_sequence
+#: model:ir.model.fields,field_description:custom_ed.field_res_users_sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_document
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_session_document
+msgid "Served by"
+msgstr "Realizado por"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_pos_transfer_source_id
+msgid "Source Table"
+msgstr "Mesa Origen"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.view_pos_session_form_ed
+msgid "Summary by Payment Methods"
+msgstr "Resumen por Métodos de Pago"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_session_document
+msgid "TABLE TRANSFERS:"
+msgstr "TRANSFERENCIAS MESAS:"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_document
+msgid "TOTAL"
+msgstr "TOTAL"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_session_document
+msgid "TRANSACTIONS:"
+msgstr "TRANSACCIONES:"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.view_pos_pos_form_ed
+msgid "Table Transfers"
+msgstr "Transferencias de Mesas"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_document
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_session_document
+msgid "Tel:"
+msgstr "Tel.:"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_pos_transfer_date
+msgid "Transfer Date"
+msgstr "Fecha"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_pos_order_transfer_ids
+#: model:ir.ui.view,arch_db:custom_ed.view_pos_pos_form_ed
+msgid "Transfers"
+msgstr "Transferencias"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_pos_session_make_visible
+msgid "User"
+msgstr "Usuario"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_document
+#: model:ir.ui.view,arch_db:custom_ed.report_pos_session_document
+msgid "VAT:"
+msgstr "CIF/NIF:"
+
+#. module: custom_ed
+#: model:ir.model,name:custom_ed.model_calendar_calendar
+msgid "calendar.calendar"
+msgstr "calendar.calendar"
+
+#. module: custom_ed
+#: model:ir.model,name:custom_ed.model_calendar_event_location
+msgid "calendar.event.location"
+msgstr "calendar.event.location"
+
+#. module: custom_ed
+#: model:ir.model,name:custom_ed.model_ir_ui_view
+msgid "ir.ui.view"
+msgstr "ir.ui.view"
+
+#. module: custom_ed
+#: model:ir.model,name:custom_ed.model_pos_session
+msgid "pos.session"
+msgstr "pos.session"
+
+#. module: custom_ed
+#: model:ir.model,name:custom_ed.model_pos_transfer
+msgid "pos.transfer"
+msgstr "pos.transfer"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.res_partner_view_sequence
+msgid "sequence"
+msgstr "sequence"
+

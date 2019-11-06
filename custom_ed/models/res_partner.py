@@ -35,18 +35,6 @@ class ResPartner(models.Model):
         return domain_code
     
 
-    # @api.multi
-    # def name_get(self):
-    #     if self._context.get('sale_show_partner_name'):
-    #         res = []
-    #         for order in self:
-    #             name = order.name
-    #             if order.partner_id.name:
-    #                 name = '%s - %s' % (name, order.partner_id.name)
-    #             res.append((order.id, name))
-    #         return res
-    #     return super(SaleOrder, self).name_get()
-
     @api.multi
     def name_get(self):
  
@@ -63,8 +51,7 @@ class ResPartner(models.Model):
             sequence = None
             if partner.sequence:
                 sequence = partner.sequence
-                #name = sequence and "%s [%s]" % (partner.name, sequence) or partner.name
-
+ 
             mydict = {
                       'id': partner.id,
                       'name': name,
@@ -73,20 +60,9 @@ class ResPartner(models.Model):
             result.append(_name_get(mydict))
         return result
 
-    # @api.model
-    # def name_search(self, name='', args=None, operator='ilike', limit=100):
-    #     if self._context.get('sale_show_partner_name'):
-    #         if operator in ('ilike', 'like', '=', '=like', '=ilike'):
-    #             domain = expression.AND([
-    #                 args or [],
-    #                 ['|', ('name', operator, name), ('partner_id.name', operator, name)]
-    #             ])
-    #             return self.search(domain, limit=limit).name_get()
-    #     return super(SaleOrder, self).name_search(name, args, operator, limit)
 
     @api.model
     def name_search(self, name='', args=None, operator='ilike', limit=100):
-        _logger.info('name search==========%s' % name)
         if not args:
             args = []
         

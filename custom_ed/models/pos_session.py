@@ -3,7 +3,8 @@
 
 from odoo import api, fields, models, SUPERUSER_ID, _
 from odoo.exceptions import UserError, ValidationError
-
+import logging
+_logger = logging.getLogger(__name__)
 
 
 class PosSession(models.Model):
@@ -89,4 +90,40 @@ class PosSession(models.Model):
             } for (partner), qty in customers_created.items()],key=lambda l: l['partner_name'])
         return customers
     
+    @api.multi
+    def get_products_changes(self):
+        self.ensure_one()
+        products_changed = {}
+        for order in self.order_ids:
+            if order.transfer:
+                for line in order.lines:
+                    key = (line.product_id)
+                    products_changed.setdefault(key, 0.0)
+                    products_cahnged[key] += line.qty
+            products= sorted([{
+                    'product_id': product.id,
+                    'product_name': product.name,
+                    'qty': qty
+                } for (product), qty in products_changed.items()],key=lambda l: l['product_name'])
+        return products
+
+
+
+    @api.multi
+    def get_order_transfers(self):
+        self.ensure_one()
+        order_transfers = {}
+        
+        
+        for order in self.order_ids:
+            for transfer in order.transfer_ids:
+                key = (transfer)
+                order_transfers[key] = order
+        transfers= sorted([{
+                'order': order.name,
+                'source': transfer.source_id.name,
+                'destiny': transfer.destiny_id.name
+            } for (transfer), order in order_transfers.items()],key=lambda l: l['order'])
+        return transfers
+
     make_visible = fields.Boolean(string="User", compute='get_user')

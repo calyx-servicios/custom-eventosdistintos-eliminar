@@ -30,11 +30,13 @@
         'base',
         'calendar',
         'crm',
-        'point_of_sale'
+        'point_of_sale',
+        'pos_restaurant',
     ],
     'external_dependencies': {
     },
     'data': [
+        'security/ir.model.access.csv',
         'data/ir_sequence_data.xml',
         'view/calendar_view.xml',
         'view/lead_view.xml',
@@ -47,7 +49,7 @@
         'report/pos_template.xml',
         'report/pos_session_report.xml',
         'report/pos_session_template.xml',
-        #'web.xml',
+        'pos_assets.xml',
     ],
     'demo': [
     ],

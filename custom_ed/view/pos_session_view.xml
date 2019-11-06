@@ -28,7 +28,7 @@
         <xpath expr="//field[@name='statement_ids']" position="attributes">
                 <attribute name="attrs">{'invisible' : ['|',('state', '=', 'opening_control'),('make_visible','=',False)]}</attribute>
         </xpath>
-
+        
         <xpath expr="//field[@name='cash_register_balance_end_real']" position="attributes">
             <attribute name="attrs">{'invisible': ['|','|', ('cash_control', '=', False), ('state', '=', 'opening_control'),('make_visible','=',False)]}</attribute>
          </xpath>
@@ -89,5 +89,29 @@
     </record>
 
 
+
+
+
+    <record model="ir.ui.view" id="view_pos_pos_form_ed">
+        <field name="name">pos.order.form_ed</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form" />
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+        <xpath expr="//notebook" position="inside" >
+           
+                    <page string="Table Transfers">
+                        <field name="transfer_ids" colspan="4" nolabel="1">
+                            <tree string="Transfers" editable="bottom">
+                                <field name="date"/>
+                                <field name="source_id"/>
+                                <field name="destiny_id"/>
+                                
+                            </tree>
+                        </field>
+                    </page>
+        </xpath>
+        </field>
+    </record>
 
 </odoo>

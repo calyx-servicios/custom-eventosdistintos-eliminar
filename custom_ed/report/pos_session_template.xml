@@ -77,7 +77,7 @@
             <br/>
 
             
-            <div class='cashier' >
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 10px;">
                 TRANSACTIONS:
                 <right>
                 <span t-esc='receipt.cash_register_total_entry_encoding' t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
@@ -164,6 +164,25 @@
             <br/> 
             <br/> 
             </t>
+            
+
+            
+            
+            <t t-if='receipt.get_order_transfers()'> 
+            <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 10px;">
+                TABLE TRANSFERS:
+            </div>
+            <br/> 
+           <div class='cashier' style="min-width: 180px;max-width:180px;">
+                <t t-foreach='receipt.get_order_transfers()' t-as='line'>
+                    <t t-esc="line['order']" />:<t t-esc="line['source']" />=><t t-esc="line['destiny']" />
+                    <br/> 
+                </t>
+            </div>
+            </t>
+            <br/> 
+
+            
             <t t-if='receipt.get_products_sold()'> 
             <div class='cashier' style="min-width: 180px;max-width:180px;font-weight: bold;font-size: 10px;">
                 PRODUCTS:
@@ -178,8 +197,6 @@
             </div>
             </t>
             <br/> 
-
-            
             
             
 
