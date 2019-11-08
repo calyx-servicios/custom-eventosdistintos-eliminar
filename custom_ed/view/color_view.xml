@@ -23,10 +23,15 @@
     <field name="priority" eval="1"/>
     <field name="arch" type="xml">
         <form string="Calendar">
-            <group col="2">
-                <field name="name"/>
-                <field name="color" />
-             </group>
+        <sheet>
+            <group>
+                        
+                <group col="2">
+                    <field name="name"/>
+                    <field name="color" widget="int_color"/>
+                </group>
+              </group>
+        </sheet>
         </form>
      </field>
 </record>

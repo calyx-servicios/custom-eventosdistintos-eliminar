@@ -29,6 +29,7 @@
     'depends': [
         'base',
         'calendar',
+        'web',
         'crm',
         'point_of_sale',
         'pos_restaurant',
@@ -49,7 +50,11 @@
         'report/pos_template.xml',
         'report/pos_session_report.xml',
         'report/pos_session_template.xml',
+        'widget_assets.xml',
+        'web_assets.xml',
         'pos_assets.xml',
+        
+        
     ],
     'demo': [
     ],
