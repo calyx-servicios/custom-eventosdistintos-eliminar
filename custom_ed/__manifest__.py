@@ -52,9 +52,7 @@
         'report/pos_session_template.xml',
         'widget_assets.xml',
         'web_assets.xml',
-        'pos_assets.xml',
-        
-        
+        'pos_assets.xml'
     ],
     'demo': [
     ],

@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
+    
         <template id="assets" inherit_id="point_of_sale.assets">
             <xpath expr="." position="inside">
                 <script type="text/javascript" src="/custom_ed/static/src/js/custom_ed.js"></script>
             </xpath>
         </template>
-    </data>
+
+        <template id="assets_pos_report" inherit_id="web.report_assets_common">
+            <xpath expr="." position="inside">
+                <link href="/custom_ed/static/src/css/pos.css" rel="stylesheet"  />
+            </xpath>
+        </template>
+       
+    
 </odoo>

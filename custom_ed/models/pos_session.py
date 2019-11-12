@@ -29,13 +29,18 @@ class PosSession(models.Model):
         for order in self.order_ids:
             for line in order.lines:
                 key = (line.product_id)
-                products_sold.setdefault(key, 0.0)
-                products_sold[key] += line.qty
+                products_sold.setdefault(key, {'qty':0.0,'total':0.0,'discount':0.0})
+                if (products_sold[key]):
+                    products_sold[key]['qty']+=line.qty
+                    products_sold[key]['discount']+=line.discount
+                    products_sold[key]['total']+=line.price_subtotal_incl
         products= sorted([{
                 'product_id': product.id,
                 'product_name': product.name,
-                'qty': qty
-            } for (product), qty in products_sold.items()],key=lambda l: l['product_name'])
+                'qty': round(total['qty'],2),
+                'discount': round(total['discount'],2),
+                'total': round(total['total'],2)
+            } for (product), total in products_sold.items()],key=lambda l: l['product_name'])
         return products
 
     @api.multi
@@ -99,7 +104,7 @@ class PosSession(models.Model):
                 for line in order.lines:
                     key = (line.product_id)
                     products_changed.setdefault(key, 0.0)
-                    products_cahnged[key] += line.qty
+                    products_changed[key] += line.qty
             products= sorted([{
                     'product_id': product.id,
                     'product_name': product.name,
@@ -125,5 +130,27 @@ class PosSession(models.Model):
                 'destiny': transfer.destiny_id.name
             } for (transfer), order in order_transfers.items()],key=lambda l: l['order'])
         return transfers
+    
+    @api.multi
+    def get_order_discount(self):
+        self.ensure_one()
+        order_discount = {}
+        
+        
+        for order in self.order_ids:
+            key = (order)
+            discount =0.0
+            for line in order.lines:
+                if line.discount>0:
+                    discount+=line.discount
+            if discount>0:
+                order_discount.setdefault(key, 0.0)
+                order_discount[key] += line.discount
+
+        orders= sorted([{
+                'order': order.name,
+                'discount': round(discount,2)
+            } for (order),discount in order_discount.items()],key=lambda l: l['order'])
+        return orders
 
     make_visible = fields.Boolean(string="User", compute='get_user')

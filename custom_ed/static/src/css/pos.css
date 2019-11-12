@@ -1,29 +1,16 @@
-/* --- Fonts --- */
 
-@font-face{
-    font-family: 'Inconsolata';
-    src: url(../fonts/Inconsolata.otf);
+.pos_report_tittle {
+    min-width: 180px;
+    max-width:180px;
+    font-weight: bold;
+    font-size: 10px;
+    width: 180px;
 }
 
 
-.pos .pos-session-ticket {
-    width: 250px;
-    max-width:250px;
-    font-size: 8px;
-}
-.pos .pos-session-ticket pre{
-    font-family: "Inconsolata";
-}
-.pos .pos-session-ticket .emph{
-    font-size: 20px;
-    margin:5px;
-}
-.pos .pos-session-ticket table {
-    width: 100%;
-    border: 0;
-    table-layout: fixed;
-}
-.pos .pos-session-ticket table td {
-    border: 0;
-    word-wrap: break-word;
+.pos_report_table {
+    min-width: 150px;
+    max-width: 150px;
+    width: 150px;
+    font-size: 7px;
 }
