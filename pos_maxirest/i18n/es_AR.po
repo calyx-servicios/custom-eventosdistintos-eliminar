@@ -1,0 +1,313 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* pos_maxirest
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-14 10:55+0000\n"
+"PO-Revision-Date: 2019-11-14 10:55+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.view_pos_session_form_ed
+msgid "+ Transactions"
+msgstr "+ Transacciones"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.view_pos_config_kanban_ed
+msgid "<span>Cash Balance</span>"
+msgstr "<span>Balance de Caja</span>"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.view_pos_config_kanban_ed
+msgid "<span>Last Closing Date</span>"
+msgstr "<span>Última Fecha de Cierre</span>"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.view_pos_session_form_ed
+msgid "= Theoretical Closing Balance"
+msgstr "= Saldo teórico de cierre"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "Amount"
+msgstr "Importe"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "BILLS COUNT:"
+msgstr "RECUENTO BILLETES:"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "Bill"
+msgstr "Factura"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_document
+msgid "CHANGE"
+msgstr "CAMBIO"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "CUSTOMERS CREATED:"
+msgstr "CLIENTES CREADOS:"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.view_pos_config_kanban_ed
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: pos_maxirest
+#: model:ir.model.fields,field_description:pos_maxirest.field_pos_transfer_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: pos_maxirest
+#: model:ir.model.fields,field_description:pos_maxirest.field_pos_transfer_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "DIFFERENCE"
+msgstr "DIFERENCIA"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "Destiny"
+msgstr "Destino"
+
+#. module: pos_maxirest
+#: model:ir.model.fields,field_description:pos_maxirest.field_pos_transfer_destiny_id
+msgid "Destiny Table"
+msgstr "Mesa Destino"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "Disc%"
+msgstr "Desc%"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_document
+msgid "Discount:"
+msgstr "Descuento:"
+
+#. module: pos_maxirest
+#: model:ir.model.fields,field_description:pos_maxirest.field_pos_transfer_display_name
+msgid "Display Name"
+msgstr "Mostrar Nombre"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "END"
+msgstr "CIERRE"
+
+#. module: pos_maxirest
+#: model:ir.model.fields,field_description:pos_maxirest.field_pos_transfer_id
+msgid "ID"
+msgstr "ID"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "INVOICES:"
+msgstr "FACTURAS:"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "Journal"
+msgstr "Diario"
+
+#. module: pos_maxirest
+#: model:ir.model.fields,field_description:pos_maxirest.field_pos_transfer___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: pos_maxirest
+#: model:ir.model.fields,field_description:pos_maxirest.field_pos_transfer_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización realizada por"
+
+#. module: pos_maxirest
+#: model:ir.model.fields,field_description:pos_maxirest.field_pos_transfer_write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "Method"
+msgstr "Metodo"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "Name"
+msgstr "Nombre"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.view_pos_config_kanban_ed
+msgid "New Session"
+msgstr "Nueva sesión"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "ORDER DISCOUNTS:"
+msgstr "DESCUENTOS:"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.view_pos_config_kanban_ed
+msgid "Open Session"
+msgstr "Abrir sesión"
+
+#. module: pos_maxirest
+#: model:ir.model.fields,field_description:pos_maxirest.field_pos_transfer_order_id
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "Order"
+msgstr "Pedir"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "PAYMENT METHODS:"
+msgstr "METODOS DE PAGO:"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "PRODUCTS:"
+msgstr "PRODUCTOS:"
+
+#. module: pos_maxirest
+#: model:ir.model,name:pos_maxirest.model_pos_order
+msgid "Point of Sale Orders"
+msgstr "Pedidos del Punto de Venta"
+
+#. module: pos_maxirest
+#: model:ir.actions.report,name:pos_maxirest.action_report_pos_order
+#: model:ir.actions.report,name:pos_maxirest.action_report_pos_session
+msgid "Print Report"
+msgstr "Imprimir Reporte"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "Product"
+msgstr "Producto"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "Qty"
+msgstr "Cant."
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.view_pos_config_kanban_ed
+msgid "Resume"
+msgstr "Reanudar"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "START"
+msgstr "INICIO"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_document
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "Served by"
+msgstr "Ejecutado por"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "Source"
+msgstr "Origen"
+
+#. module: pos_maxirest
+#: model:ir.model.fields,field_description:pos_maxirest.field_pos_transfer_source_id
+msgid "Source Table"
+msgstr "Mesa Origen"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "State"
+msgstr "Estado"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.view_pos_session_form_ed
+msgid "Summary by Payment Methods"
+msgstr "Resumen por métodos de pago"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "TABLE TRANSFERS:"
+msgstr "TRANSFERENCIAS MESAS:"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_document
+msgid "TOTAL"
+msgstr "TOTAL"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "TRANSACTIONS"
+msgstr "TRANSACCIONES"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "Table"
+msgstr "Mesa"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.view_pos_pos_form_ed
+msgid "Table Transfers"
+msgstr "Transferencias de Mesas"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_document
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "Tel:"
+msgstr "Tel.:"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "Total"
+msgstr "Total"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "Total:"
+msgstr "Total:"
+
+#. module: pos_maxirest
+#: model:ir.model.fields,field_description:pos_maxirest.field_pos_transfer_date
+msgid "Transfer Date"
+msgstr "Fecha"
+
+#. module: pos_maxirest
+#: model:ir.model.fields,field_description:pos_maxirest.field_pos_order_transfer_ids
+#: model:ir.ui.view,arch_db:pos_maxirest.view_pos_pos_form_ed
+msgid "Transfers"
+msgstr "Transferencias"
+
+#. module: pos_maxirest
+#: model:ir.model.fields,field_description:pos_maxirest.field_pos_session_make_visible
+msgid "User"
+msgstr "Usuario"
+
+#. module: pos_maxirest
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_document
+#: model:ir.ui.view,arch_db:pos_maxirest.report_pos_session_document
+msgid "VAT:"
+msgstr "CIF/NIF:"
+
+#. module: pos_maxirest
+#: model:ir.model,name:pos_maxirest.model_pos_session
+msgid "pos.session"
+msgstr "pos.session"
+
+#. module: pos_maxirest
+#: model:ir.model,name:pos_maxirest.model_pos_transfer
+msgid "pos.transfer"
+msgstr "pos.transfer"
+

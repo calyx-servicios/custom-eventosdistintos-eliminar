@@ -1,0 +1,45 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* custom_ed
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-14 11:12+0000\n"
+"PO-Revision-Date: 2019-11-14 11:12+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.report_partner_plan_template_custom_ed
+msgid "<span>Account Status # </span>"
+msgstr "<span>Estado de Cuenta # </span>"
+
+#. module: custom_ed
+#: model:ir.model,name:custom_ed.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: custom_ed
+#: model:ir.model.fields,field_description:custom_ed.field_res_partner_sequence
+#: model:ir.model.fields,field_description:custom_ed.field_res_users_sequence
+msgid "Sequence"
+msgstr "Legajo"
+
+#. module: custom_ed
+#. openerp-web
+#: code:addons/custom_ed/static/src/js/web_calendar_color.js:105
+#, python-format
+msgid "Undefined"
+msgstr "Indefinido"
+
+#. module: custom_ed
+#: model:ir.ui.view,arch_db:custom_ed.res_partner_view_sequence
+msgid "sequence"
+msgstr "legajo"
+
