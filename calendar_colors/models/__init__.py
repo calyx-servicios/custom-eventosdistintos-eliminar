@@ -3,4 +3,5 @@
 # directory
 ##############################################################################
 
-from . import res_partner
+from . import calendar
+from . import lead

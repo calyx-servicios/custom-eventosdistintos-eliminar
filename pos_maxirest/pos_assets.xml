@@ -3,13 +3,13 @@
     
         <template id="assets" inherit_id="point_of_sale.assets">
             <xpath expr="." position="inside">
-                <script type="text/javascript" src="/custom_ed/static/src/js/custom_ed.js"></script>
+                <script type="text/javascript" src="/pos_maxirest/static/src/js/pos_maxirest.js"></script>
             </xpath>
         </template>
 
         <template id="assets_pos_report" inherit_id="web.report_assets_common">
             <xpath expr="." position="inside">
-                <link href="/custom_ed/static/src/css/pos.css" rel="stylesheet"  />
+                <link href="/pos_maxirest/static/src/css/pos.css" rel="stylesheet"  />
             </xpath>
         </template>
        

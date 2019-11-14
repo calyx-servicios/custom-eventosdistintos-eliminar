@@ -19,23 +19,29 @@
 #
 ##############################################################################
 {
-    'name': 'Payment Terms',
+    'name': 'Pos Maxirest',
     'version': '11.0.1',
     'category': 'Tools',
     'author': "Calyx",
     'website': 'www.calyxservicios.com.ar',
     'license': 'AGPL-3',
-    'summary': '''Payment Days new Features''',
+    'summary': '''Pos Maxirest Features ''',
     'depends': [
         'base',
-        'account'
+        'point_of_sale',
+        'pos_restaurant',
     ],
     'external_dependencies': {
     },
     'data': [
-        'view/account_view.xml',
-        'report/partner_report.xml',
-        'report/partner_template.xml',
+        'pos_assets.xml',
+        'security/ir.model.access.csv',
+        'view/pos_session_view.xml',
+        'report/paperformat.xml',
+        'report/pos_report.xml',
+        'report/pos_template.xml',
+        'report/pos_session_report.xml',
+        'report/pos_session_template.xml',
     ],
     'demo': [
     ],

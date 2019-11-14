@@ -30,12 +30,12 @@
             <t t-set="company" t-value="res_company"/>
         </t>
 
-        <t t-call="custom_ed.external_layout_standard"><t t-raw="0"/></t>
+        <t t-call="pos_maxirest.external_layout_standard"><t t-raw="0"/></t>
         
     </template>
 
 <template id="report_pos_session_document">
-    <t t-call="custom_ed.external_layout">
+    <t t-call="pos_maxirest.external_layout">
     
     <div class="page"  style="min-width: 240px;max-width:250px;font-size: 8px !important;">
         <div class="pos-session-ticket">
@@ -90,19 +90,20 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>DIFFERENCE</td>
-                        <td class="text-right">
-                        <t t-esc='receipt.cash_register_difference'
-                            t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
-                        </td>
-                    </tr>
-                    <tr>
                         <td>END</td>
                         <td class="text-right">
                         <t t-esc='receipt.cash_register_balance_end'
                             t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
                         </td>
                     </tr>
+                    <tr>
+                        <td>DIFFERENCE</td>
+                        <td class="text-right">
+                        <t t-esc='receipt.cash_register_difference'
+                            t-options='{"widget": "monetary", "display_currency": receipt.currency_id}'/>
+                        </td>
+                    </tr>
+                    
                 </tbody>
             </table>  
             <br/>
@@ -227,7 +228,7 @@
                 </thead>
                 <tbody class="sale_tbody">
                 <t t-foreach='receipt.get_order_transfers()' t-as='line'>
-                    <tr>
+                    <tr > 
                         <td><t t-esc="line['order']" /></td>
                         <td class="text-right"><t t-esc="line['source']" /></td>
                         <td class="text-right"><t t-esc="line['destiny']" /></td>
@@ -252,14 +253,17 @@
                 <table class="pos_report_table">
                 <thead>
                 <th>Order</th>
-                <th class="text-right">Discount</th>
-                
+                <th>Table</th>
+                <th class="text-right">Disc%</th>
+                <th class="text-right">Amount</th>
                 </thead>
                 <tbody class="sale_tbody">
                 <t t-foreach='receipt.get_order_discount()' t-as='line'>
                     <tr>
                         <td><t t-esc="line['order']" /></td>
+                        <td><t t-esc="line['table']" /></td>
                         <td class="text-right"><t t-esc="line['discount']" /></td>
+                        <td class="text-right"><t t-esc="line['amount']" /></td>
                     </tr>
                 </t>
                 </tbody>
@@ -279,7 +283,7 @@
                 <th>Product</th>
                 <th class="text-right">Qty</th>
                 <th class="text-right">Total</th>
-                <th class="text-right">Disc%</th>
+                
                 </thead>
                 <tbody class="sale_tbody">
                 <t t-foreach='receipt.get_products_sold()' t-as='line'>
@@ -287,7 +291,13 @@
                         <td><t t-esc="line['product_name']" /></td>
                         <td class="text-right"><t t-esc="line['qty']" /></td>
                         <td class="text-right"><t t-esc="line['total']" /></td>
-                        <td class="text-right"><t t-esc="line['discount']" /></td>
+                    </tr>
+                </t>
+                <t t-foreach='receipt.get_products_sold_total()' t-as='summary'>
+                    <tr style="font-weight: bold;">
+                    <td>Total:</td>
+                            <td class="text-right"><t t-esc="summary['qty']" /></td>
+                            <td class="text-right"><t t-esc="summary['total']" /></td>
                     </tr>
                 </t>
                 </tbody>
@@ -314,7 +324,7 @@
 <template id="report_pos_session">
     <t t-call="web.html_container">
         <t t-foreach="docs" t-as="receipt">
-            <t t-call="custom_ed.report_pos_session_document" />
+            <t t-call="pos_maxirest.report_pos_session_document" />
         </t>
     </t>
 </template>

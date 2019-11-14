@@ -28,31 +28,16 @@
     'summary': '''Eventos Distintos Customization 1.0''',
     'depends': [
         'base',
-        'calendar',
-        'web',
-        'crm',
-        'point_of_sale',
-        'pos_restaurant',
+        'payment_terms'
     ],
     'external_dependencies': {
     },
     'data': [
         'security/ir.model.access.csv',
         'data/ir_sequence_data.xml',
-        'view/calendar_view.xml',
-        'view/lead_view.xml',
-        'view/color_view.xml',
         'view/res_partner_view.xml',
-        'view/pos_session_view.xml',
         'view/account_invoice_view.xml',
-        'report/paperformat.xml',
-        'report/pos_report.xml',
-        'report/pos_template.xml',
-        'report/pos_session_report.xml',
-        'report/pos_session_template.xml',
-        'widget_assets.xml',
-        'web_assets.xml',
-        'pos_assets.xml'
+        'report/partner_template.xml',
     ],
     'demo': [
     ],

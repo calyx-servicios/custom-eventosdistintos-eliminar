@@ -19,23 +19,29 @@
 #
 ##############################################################################
 {
-    'name': 'Payment Terms',
+    'name': 'Calendar Colors',
     'version': '11.0.1',
     'category': 'Tools',
     'author': "Calyx",
     'website': 'www.calyxservicios.com.ar',
     'license': 'AGPL-3',
-    'summary': '''Payment Days new Features''',
+    'summary': '''Allows multiple calendar creation with custom Colors and add them as filters too''',
     'depends': [
         'base',
-        'account'
+        'calendar',
+        'web',
+        'crm'
     ],
     'external_dependencies': {
     },
     'data': [
-        'view/account_view.xml',
-        'report/partner_report.xml',
-        'report/partner_template.xml',
+        'security/ir.model.access.csv',
+        'view/calendar_view.xml',
+        'view/lead_view.xml',
+        'view/color_view.xml',
+        'view/menu.xml',
+        'widget_assets.xml',
+        'web_assets.xml'
     ],
     'demo': [
     ],

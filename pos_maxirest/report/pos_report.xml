@@ -8,8 +8,8 @@
             string="Print Report"
             model="pos.order" 
             report_type="qweb-html"
-            file="custom_ed.report_pos_order" 
-            name="custom_ed.report_pos_order"
+            file="pos_maxirest.report_pos_order" 
+            name="pos_maxirest.report_pos_order"
             print_report_name="'POS - %s' % (object.name)"
         />
 

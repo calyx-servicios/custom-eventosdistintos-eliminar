@@ -42,10 +42,12 @@ class PosOrder(models.Model):
     @api.model
     def _process_order(self, pos_order):
         order=super(PosOrder, self)._process_order(pos_order)
-        for transfer in pos_order['transfer_ids']:
-            data=transfer[2]
-            data['order_id']=order.id
-            order.add_transfer(self._transfer_fields(data))
+        _logger.debug('=====_process order ui %r', pos_order)
+        if 'transfer_ids' in pos_order:
+            for transfer in pos_order['transfer_ids']:
+                data=transfer[2]
+                data['order_id']=order.id
+                order.add_transfer(self._transfer_fields(data))
         return order
     
     

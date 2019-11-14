@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<template id="report_partner_plan_template_custom_ed" inherit_id="payment_terms.report_partner_plan_template">
+
+    
+<xpath expr="//div[@class='account_tittle']" position="replace">
+                <h3>
+                    <div class="account_tittle">
+                    <t >
+                        <span>Account Status # </span>
+                    </t>
+                    <span t-field="partner.sequence"/>
+                    </div>
+                </h3>
+</xpath>
+</template>
+
+
+
+</odoo>

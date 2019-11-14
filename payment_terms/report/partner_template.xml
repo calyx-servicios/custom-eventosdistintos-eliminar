@@ -10,10 +10,11 @@
         
             <div class="oe_structure"/>
                 <h3>
+                    <div class="account_tittle">
                     <t >
                         <span>Account Status # </span>
                     </t>
-                    <span t-field="partner.sequence"/>
+                    </div>
                 </h3>
 
                 

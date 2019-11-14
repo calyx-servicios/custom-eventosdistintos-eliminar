@@ -3,8 +3,8 @@
     
     <template id="assets_color_end" inherit_id="web.assets_backend">
         <xpath expr="." position="inside">
-            <script src="/custom_ed/static/src/js/field_widget.js" type="text/javascript" />
-            <link href="/custom_ed/static/src/css/style.css" rel="stylesheet" type="text/scss" />
+            <script src="/calendar_colors/static/src/js/field_widget.js" type="text/javascript" />
+            <link href="/calendar_colors/static/src/css/style.css" rel="stylesheet" type="text/scss" />
         </xpath>
     </template>
     

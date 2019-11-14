@@ -32,8 +32,12 @@ class PosSession(models.Model):
                 products_sold.setdefault(key, {'qty':0.0,'total':0.0,'discount':0.0})
                 if (products_sold[key]):
                     products_sold[key]['qty']+=line.qty
-                    products_sold[key]['discount']+=line.discount
-                    products_sold[key]['total']+=line.price_subtotal_incl
+                    
+                    price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
+                    amount = price * line.qty
+                    discount = (line.price_unit - price) * line.qty
+                    products_sold[key]['discount']+=discount
+                    products_sold[key]['total']+= amount
         products= sorted([{
                 'product_id': product.id,
                 'product_name': product.name,
@@ -44,16 +48,31 @@ class PosSession(models.Model):
         return products
 
     @api.multi
+    def get_products_sold_total(self):
+        self.ensure_one()
+        products_sold = {
+            'qty':0,
+            'total':0.0}
+        for order in self.order_ids:
+            for line in order.lines:
+                products_sold['qty']+=line.qty
+                price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
+                amount = price * line.qty
+                products_sold['total']+= amount
+        products_sold['total']=round(products_sold['total'],2)
+        return [products_sold]
+
+    @api.multi
     def get_journal_invoices(self):
         self.ensure_one()
         journal_invoices = {}
         for order in self.order_ids:
-            key = (order.sale_journal)
+            key = (order.invoice_id.journal_document_type_id)
             journal_invoices.setdefault(key, 0.0)
             journal_invoices[key] += order.amount_total
         journals= sorted([{
-                'journal_id': journal.id,
-                'journal_name': journal.name,
+                'journal_id': journal.document_type_id.id,
+                'journal_name': journal.document_type_id.name,
                 'amount': amount
             } for (journal), amount in journal_invoices.items()],key=lambda l: l['journal_name'])
         return journals
@@ -139,17 +158,27 @@ class PosSession(models.Model):
         
         for order in self.order_ids:
             key = (order)
+            order_discount.setdefault(key, {'discount':0.0,'amount':0.0})
             discount =0.0
+            amount = 0.0
+            real = 0.0
             for line in order.lines:
                 if line.discount>0:
+                    price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
+                    amount += (line.price_unit - price) * line.qty
+                    real += line.price_unit * line.qty
                     discount+=line.discount
+                    
             if discount>0:
                 order_discount.setdefault(key, 0.0)
-                order_discount[key] += line.discount
+                order_discount[key]['discount'] = (amount/real)*100
+                order_discount[key]['amount'] = amount
 
         orders= sorted([{
                 'order': order.name,
-                'discount': round(discount,2)
+                'discount': round(discount['discount'],2),
+                'table': order.table_id.name,
+                'amount': round(discount['amount'],2)
             } for (order),discount in order_discount.items()],key=lambda l: l['order'])
         return orders
 

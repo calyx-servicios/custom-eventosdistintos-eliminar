@@ -10,9 +10,9 @@
             string="Print Report"
             model="pos.session" 
             report_type="qweb-pdf"
-            paperformat="custom_ed.paperformat_ticket"
-            file="custom_ed.report_pos_session" 
-            name="custom_ed.report_pos_session"
+            paperformat="pos_maxirest.paperformat_ticket"
+            file="pos_maxirest.report_pos_session" 
+            name="pos_maxirest.report_pos_session"
             print_report_name="'POS - %s' % (object.name)"
         />
 
