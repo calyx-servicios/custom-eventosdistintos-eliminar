@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
+from num2words import num2words
 
 
 class SaleOrder(models.Model):
@@ -17,6 +18,7 @@ class SaleOrder(models.Model):
     agreement_id = fields.Many2one('agreement', string="Agreement", copy=False)
 
     @api.multi
+    @api.depends('payment_term_id', 'amount_total')
     def _onchange_payment_term(self):
         for sale in self:
             if sale.payment_term_id and sale.payment_term_id.plan:
@@ -28,14 +30,23 @@ class SaleOrder(models.Model):
                         sale.sign_percentage = round(
                             100*(sale.sign_amount/sale.amount_total), 2)
                         sale.remain_percentage = 100-sale.sign_percentage
-                        
-    sign_amount = fields.Monetary(string='Sign Amount', compute=_onchange_payment_term)
-    remain_amount = fields.Monetary(string='Remain Amount',compute=_onchange_payment_term)
-    sign_percentage = fields.Monetary(string='Sign Percentage',compute=_onchange_payment_term)
-    remain_percentage = fields.Monetary(
-        string='Remain Percentage', readonly=True)
+                        words = num2words(sale.amount_total, lang='es')
+                        sale.amount_words = words.upper()
+                        words = num2words(sale.sign_amount, lang='es')
+                        sale.sign_words = words.upper()
 
-    
+    sign_amount = fields.Monetary(
+        string='Sign Amount', compute=_onchange_payment_term)
+    remain_amount = fields.Monetary(
+        string='Remain Amount', compute=_onchange_payment_term)
+    sign_percentage = fields.Monetary(
+        string='Sign Percentage', compute=_onchange_payment_term)
+    remain_percentage = fields.Monetary(
+        string='Remain Percentage', compute=_onchange_payment_term)
+    sign_words = fields.Char(
+        string='Sign Amount Words', compute=_onchange_payment_term)
+    amount_words = fields.Char(
+        string='Amount Words', compute=_onchange_payment_term)
 
     @api.multi
     def action_generate_template(self):
