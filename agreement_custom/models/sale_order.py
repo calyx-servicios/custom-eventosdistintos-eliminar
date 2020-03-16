@@ -53,8 +53,10 @@ class SaleOrder(models.Model):
         for order in self:
             if not order.agreement_id:
                 if order.agreement_template_id:
+                    name = order.agreement_template_id.name
+                    name += '| '+order.name
                     order.agreement_id = order.agreement_template_id.copy(default={
-                        'name': order.name,
+                        'name': name,
                         'is_template': False,
                         'sale_id': order.id,
                         'partner_id': order.partner_id.id,
