@@ -18,7 +18,6 @@ class Agreement(models.Model):
             super(Agreement, self)._compute_dynamic_description()
         except:
             pass
-            
 
     description = fields.Html(
         string="Description",
@@ -43,36 +42,39 @@ class Agreement(models.Model):
         string="Sign Date",
         track_visibility='onchange',
         help="When the agreement must be signed.")
-    
 
     sale_id = fields.Many2one('sale.order', string='Sales Order')
 
     @api.multi
     def get_start_date(self):
         if self.start_date:
-            start=datetime.datetime.strptime(self.start_date, '%Y-%m-%d %H:%M:%S')
+            start = datetime.datetime.strptime(
+                self.start_date, '%Y-%m-%d %H:%M:%S')
             return start.strftime("%d/%m/%Y")
-    
+
     @api.multi
     def get_start_time(self):
         if self.start_date:
-            start=datetime.datetime.strptime(self.start_date, '%Y-%m-%d %H:%M:%S')
+            start = datetime.datetime.strptime(
+                self.start_date, '%Y-%m-%d %H:%M:%S')
             return start.strftime("%H:%M")
-    
+
     @api.multi
     def get_end_date(self):
         if self.end_date:
-            end=datetime.datetime.strptime(self.end_date, '%Y-%m-%d %H:%M:%S')
+            end = datetime.datetime.strptime(
+                self.end_date, '%Y-%m-%d %H:%M:%S')
             return end.strftime("%d/%m/%Y")
-    
+
     @api.multi
     def get_end_time(self):
         if self.end_date:
-            end=datetime.datetime.strptime(self.end_date, '%Y-%m-%d %H:%M:%S')
+            end = datetime.datetime.strptime(
+                self.end_date, '%Y-%m-%d %H:%M:%S')
             return end.strftime("%H:%M")
-    
+
     @api.multi
     def get_sign_date(self):
         if self.sign_date:
-            sign=datetime.datetime.strptime(self.sign_date, '%Y-%m-%d')
+            sign = datetime.datetime.strptime(self.sign_date, '%Y-%m-%d')
             return sign.strftime("%d de %B de %Y")
