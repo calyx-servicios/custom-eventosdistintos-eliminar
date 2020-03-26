@@ -12,18 +12,27 @@
 
 
             <field name="partner_id" position="after">
-                <field name="agreement_template_id" />
+                <label for="opportunity_id" />
+                <field name="opportunity_id" />
+                <label for="start_date" />
+                <field name="start_date" />
+                <label for="end_date" />
+                <field name="end_date" />
+                <label for="sign_date" />
+                <field name="sign_date" />
                 <group name="Agreement">
-                    <field name="agreement_id" readonly="1" attrs="{'invisible': [('agreement_id', '=', False)]}" />
-                    <field name="sign_amount" />
-                    <field name="sign_percentage" readonly="1" />
-                    <field name="remain_amount" readonly="1" />
-                    <field name="remain_percentage" readonly="1" />
+                    <field name="agreement_template_id" />
+                    <field name="agreement_id" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}" />
+                    <field name="sign_amount" attrs="{'invisible': [('agreement_template_id', '=', False)]}"/>
+                    <field name="sign_percentage" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}"/>
+                    <field name="remain_amount" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}"/>
+                    <field name="remain_percentage" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}"/>
                 </group>
 
             </field>
             <button name="action_cancel" position="before">
-                <button name="action_generate_template" string="Generate Agreement" type="object" />
+                <button name="action_generate_template" string="Generate Agreement" type="object" states="sent,sale" />
+                <button name="print_contract" string="Print Agreement" type="object" states="sent,sale" attrs="{'invisible': [('agreement_id', '=', False)]}"/>
             </button>
         </field>
     </record>

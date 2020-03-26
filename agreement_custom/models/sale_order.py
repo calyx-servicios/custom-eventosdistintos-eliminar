@@ -12,19 +12,32 @@ class SaleOrder(models.Model):
         'agreement',
         string="Agreement Template",
         domain="[('is_template', '=', True)]")
-    party_partner_id = fields.Many2one(
-        'res.partner',
-        string="Party Partner")
+
     agreement_id = fields.Many2one('agreement', string="Agreement", copy=False)
 
+    start_date = fields.Datetime(
+        string="Start Date",
+        help="When the agreement starts.")
+    end_date = fields.Datetime(
+        string="End Date",
+        help="When the agreement ends.")
+
+    sign_date = fields.Date(
+        string="Sign Date",
+        help="When the agreement must be signed.")
+
     @api.multi
-    @api.depends('payment_term_id', 'amount_total')
+    @api.depends('payment_term_id', 'amount_total','invoice_ids','invoice_ids.state')
     def _onchange_payment_term(self):
         for sale in self:
             if sale.payment_term_id and sale.payment_term_id.plan:
                 split = sale.payment_term_id.plan_split
+                invoiced =0.0
+                for invoice in sale.invoice_ids:
+                    if invoice.state not in ('draft','canceled'):
+                        invoiced+= invoice.amount_total
                 if split > 0:
-                    sale.sign_amount = sale.amount_total/split
+                    sale.sign_amount = invoiced
                     sale.remain_amount = sale.amount_total-sale.sign_amount
                     if sale.amount_total > 0:
                         sale.sign_percentage = round(
@@ -36,7 +49,7 @@ class SaleOrder(models.Model):
                         sale.sign_words = words.upper()
 
     sign_amount = fields.Monetary(
-        string='Sign Amount', compute=_onchange_payment_term)
+        string='Sign Amount', )
     remain_amount = fields.Monetary(
         string='Remain Amount', compute=_onchange_payment_term)
     sign_percentage = fields.Monetary(
@@ -63,6 +76,9 @@ class SaleOrder(models.Model):
                         'analytic_account_id':
                             order.analytic_account_id and
                             order.analytic_account_id.id or False,
+                        'start_date': order.start_date,
+                        'end_date': order.end_date,
+                        'sign_date': order.sign_date
                     })
                     for line in self.order_line:
                         # Create agreement line
@@ -83,3 +99,42 @@ class SaleOrder(models.Model):
                 if order.agreement_template_id:
                     self.action_generate_template()
         return res
+
+    @api.multi
+    def _print_contract(self):
+        for order in self:
+            if not order.agreement_id:
+                if order.agreement_template_id:
+                    order.agreement_id
+        
+    @api.multi
+    def print_contract(self):
+
+        self.ensure_one()
+        action = self.env.ref(
+            'agreement_custom.partner_agreement_contract_document_preview')
+        vals = action.read()[0]
+        context = vals.get('context', {})
+        
+
+        context['active_id'] = self.agreement_id.id
+        context['active_ids'] = [self.agreement_id.id]
+        vals['context'] = context
+        return vals
+
+    # <report
+    #         id="partner_agreement_contract_document_preview"
+    #         model="agreement"
+    #         string="Dynamic Contract Preview"
+    #         name="agreement_custom.report_agreement_document"
+    #         file="agreement_custom.report_agreement_document"
+    #         report_type="qweb-html"/>
+
+    #     <report
+    #   id="action_report_employee_html"
+    #   model="report_employee"
+    #   string="Employee Report HTML"
+    #   report_type="qweb-html"
+    #   name="easy_invoice_employee_report.employee_report_qweb"
+    #   file="easy_invoice_employee_report.employee_report__html"
+    #   />

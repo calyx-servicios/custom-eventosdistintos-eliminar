@@ -29,6 +29,8 @@
     'depends': [
         'sale',
         'agreement',
+        'crm',
+        'sale_crm'
     ],
     'external_dependencies': {
     },
