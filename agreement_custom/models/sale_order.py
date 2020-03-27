@@ -14,7 +14,7 @@ class SaleOrder(models.Model):
         domain="[('is_template', '=', True)]")
 
     agreement_id = fields.Many2one('agreement', string="Agreement", copy=False)
-
+    event_id = fields.Many2one('calendar.event', string="Event")
     start_date = fields.Datetime(
         string="Start Date",
         help="When the agreement starts.")
@@ -26,8 +26,41 @@ class SaleOrder(models.Model):
         string="Sign Date",
         help="When the agreement must be signed.")
 
+    dynamic_description = fields.Html(
+        string="Dynamic Description",
+        help='Compute dynamic description')
+
+    @api.multi
+    @api.onchange('start_date','end_date','sign_date','agreement_id','partner_id','name')
+    def _onchange_dynamic(self):
+        for sale in self:
+            if sale.agreement_id:
+                sale.agreement_id.start_date=sale.start_date
+                sale.agreement_id.end_date=sale.end_date
+                sale.agreement_id.sign_date=sale.sign_date
+                sale.dynamic_description=sale.agreement_id.dynamic_description
+
+    
+    @api.multi
+    @api.onchange('event_id')
+    def _onchange_event(self):
+        for sale in self:
+            if sale.event_id:
+                sale.start_date=sale.event_id.start_date
+                sale.end_date=sale.event_id.stop_date
+
+    
+    @api.multi
+    @api.onchange('opportunity_id')
+    def _onchange_opportunity(self):
+        for sale in self:
+            sale.event_id=None
+            if sale.opportunity_id:
+                sale.partner_id=sale.opportunity_id.partner_id.id
+
     @api.multi
     @api.depends('payment_term_id', 'amount_total','invoice_ids','invoice_ids.state')
+    @api.onchange('payment_term_id','amount_total')
     def _onchange_payment_term(self):
         for sale in self:
             if sale.payment_term_id and sale.payment_term_id.plan:
@@ -61,6 +94,8 @@ class SaleOrder(models.Model):
     amount_words = fields.Char(
         string='Amount Words', compute=_onchange_payment_term)
 
+    
+
     @api.multi
     def action_generate_template(self):
         for order in self:
@@ -90,6 +125,9 @@ class SaleOrder(models.Model):
                             'sale_line_id': line.id,
                             'uom_id': line.product_uom.id
                         })
+            if order.agreement_id:
+                order.dynamic_description=order.agreement_id.dynamic_description
+            
 
     @api.multi
     def _action_confirm(self):
@@ -108,7 +146,7 @@ class SaleOrder(models.Model):
                     order.agreement_id
         
     @api.multi
-    def print_contract(self):
+    def print_agreement_contract(self):
 
         self.ensure_one()
         action = self.env.ref(
@@ -122,19 +160,18 @@ class SaleOrder(models.Model):
         vals['context'] = context
         return vals
 
-    # <report
-    #         id="partner_agreement_contract_document_preview"
-    #         model="agreement"
-    #         string="Dynamic Contract Preview"
-    #         name="agreement_custom.report_agreement_document"
-    #         file="agreement_custom.report_agreement_document"
-    #         report_type="qweb-html"/>
+    @api.multi
+    def print_contract(self):
 
-    #     <report
-    #   id="action_report_employee_html"
-    #   model="report_employee"
-    #   string="Employee Report HTML"
-    #   report_type="qweb-html"
-    #   name="easy_invoice_employee_report.employee_report_qweb"
-    #   file="easy_invoice_employee_report.employee_report__html"
-    #   />
+        self.ensure_one()
+        action = self.env.ref(
+            'agreement_custom.sale_agreement_contract_document_preview')
+        vals = action.read()[0]
+        context = vals.get('context', {})
+        
+
+        context['active_id'] = self.id
+        context['active_ids'] = [self.id]
+        vals['context'] = context
+        return vals
+

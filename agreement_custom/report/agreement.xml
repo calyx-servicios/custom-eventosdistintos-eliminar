@@ -36,4 +36,11 @@
         </t>
     </template>
 
+    <report
+            id="sale_agreement_contract_document_preview"
+            model="sale.order"
+            string="Contract Preview"
+            name="agreement_custom.report_agreement_document"
+            file="agreement_custom.report_agreement_document"
+            report_type="qweb-html"/>
 </odoo>

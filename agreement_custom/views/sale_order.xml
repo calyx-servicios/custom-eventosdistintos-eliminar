@@ -14,6 +14,8 @@
             <field name="partner_id" position="after">
                 <label for="opportunity_id" />
                 <field name="opportunity_id" />
+                <label for="event_id" />
+                <field name="event_id" domain="[('opportunity_id','=',opportunity_id)]"/>
                 <label for="start_date" />
                 <field name="start_date" />
                 <label for="end_date" />
@@ -28,8 +30,13 @@
                     <field name="remain_amount" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}"/>
                     <field name="remain_percentage" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}"/>
                 </group>
-
+                
             </field>
+            <xpath expr="//group" position="after">
+                <group string="Dynamic Description Preview">
+                    <field name="dynamic_description"  nolabel="1" />
+                </group>
+            </xpath>
             <button name="action_cancel" position="before">
                 <button name="action_generate_template" string="Generate Agreement" type="object" states="sent,sale" />
                 <button name="print_contract" string="Print Agreement" type="object" states="sent,sale" attrs="{'invisible': [('agreement_id', '=', False)]}"/>

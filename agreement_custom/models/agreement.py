@@ -13,6 +13,7 @@ class Agreement(models.Model):
 
     # compute the dynamic content for mako expression inside a try in case the user fuck it
     @api.multi
+    @api.onchange('start_date','end_date','sign_date','description','sale_id','sale_id.partner')
     def _compute_dynamic_description(self):
         try:
             super(Agreement, self)._compute_dynamic_description()
@@ -44,6 +45,13 @@ class Agreement(models.Model):
         help="When the agreement must be signed.")
 
     sale_id = fields.Many2one('sale.order', string='Sales Order')
+
+    @api.multi
+    def get_event_name(self):
+        name ='Evento'
+        if self.sale_id and self.sale_id.opportunity_id:
+            name = self.sale_id.opportunity_id.name
+        return name
 
     @api.multi
     def get_start_date(self):
