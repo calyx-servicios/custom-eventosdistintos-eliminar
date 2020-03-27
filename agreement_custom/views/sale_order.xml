@@ -13,7 +13,7 @@
 
             <field name="partner_id" position="after">
                 <field name="agreement_template_id" attrs="{'readonly': [('close', '=', True)]}"/>
-                <field name="close" />
+                <field name="close" invisible="1"/>
 
             </field>
             <xpath expr="//notebook" position="inside">
