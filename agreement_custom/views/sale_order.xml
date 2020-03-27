@@ -38,8 +38,8 @@
                 </group>
             </xpath>
             <button name="action_cancel" position="before">
-                <button name="action_generate_template" string="Generate Agreement" type="object" states="sent,sale" />
-                <button name="print_contract" string="Print Agreement" type="object" states="sent,sale" attrs="{'invisible': [('agreement_id', '=', False)]}"/>
+                <button name="action_generate_template" string="Generate Agreement" type="object" states="draft,sent,sale" />
+                <button name="print_contract" string="Print Agreement" type="object" states="draft,sent,sale" attrs="{'invisible': [('agreement_id', '=', False)]}"/>
             </button>
         </field>
     </record>
