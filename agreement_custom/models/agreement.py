@@ -7,6 +7,14 @@ import datetime
 import logging
 _logger = logging.getLogger(__name__)
 
+# Main Agreement Section Records Model
+class AgreementStage(models.Model):
+    _inherit= 'agreement.stage'
+   
+    close_stage = fields.Boolean(
+        string="Is Close Stage",
+        help="This sets this stage as the Close stage"
+    )
 
 class Agreement(models.Model):
     _inherit = 'agreement'
@@ -56,6 +64,7 @@ class Agreement(models.Model):
     @api.multi
     def get_start_date(self):
         if self.start_date:
+            _logger.debug('Start Date > %s ', self.start_date)
             start = datetime.datetime.strptime(
                 self.start_date, '%Y-%m-%d %H:%M:%S')
             return start.strftime("%d/%m/%Y")
@@ -63,6 +72,7 @@ class Agreement(models.Model):
     @api.multi
     def get_start_time(self):
         if self.start_date:
+            _logger.debug('Start time > %s ', self.start_date)
             start = datetime.datetime.strptime(
                 self.start_date, '%Y-%m-%d %H:%M:%S')
             return start.strftime("%H:%M")
@@ -70,6 +80,7 @@ class Agreement(models.Model):
     @api.multi
     def get_end_date(self):
         if self.end_date:
+            _logger.debug('End Date > %s ', self.end_date)
             end = datetime.datetime.strptime(
                 self.end_date, '%Y-%m-%d %H:%M:%S')
             return end.strftime("%d/%m/%Y")
@@ -77,6 +88,7 @@ class Agreement(models.Model):
     @api.multi
     def get_end_time(self):
         if self.end_date:
+            _logger.debug('End time > %s ', self.start_date)
             end = datetime.datetime.strptime(
                 self.end_date, '%Y-%m-%d %H:%M:%S')
             return end.strftime("%H:%M")

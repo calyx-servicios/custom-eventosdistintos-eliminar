@@ -25,7 +25,7 @@
                     </page>
                     <page name="dynamic" string="Dynamic">
                         <group string="Dynamic Description Preview">
-                            <field name="dynamic_description"  nolabel="1" />
+                            <field name="dynamic_description" nolabel="1" />
                         </group>
                     </page>
                 </notebook>
@@ -37,5 +37,15 @@
         </field>
     </record>
 
+    <record id="partner_agreement_stage_form_view" model="ir.ui.view">
+        <field name="name">Agreement Stage Form</field>
+        <field name="model">agreement.stage</field>
+        <field name="inherit_id" ref="agreement.partner_agreement_stage_form_view" />
 
+        <field name="arch" type="xml">
+            <field name="fold" position="after">
+                <field name="close_stage" />
+            </field>
+        </field>
+    </record>
 </odoo>

@@ -12,34 +12,33 @@
 
 
             <field name="partner_id" position="after">
-                <label for="opportunity_id" />
-                <field name="opportunity_id" />
-                <label for="event_id" />
-                <field name="event_id" domain="[('opportunity_id','=',opportunity_id)]"/>
-                <label for="start_date" />
-                <field name="start_date" />
-                <label for="end_date" />
-                <field name="end_date" />
-                <label for="sign_date" />
-                <field name="sign_date" />
-                <group name="Agreement">
-                    <field name="agreement_template_id" />
-                    <field name="agreement_id" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}" />
-                    <field name="sign_amount" attrs="{'invisible': [('agreement_template_id', '=', False)]}"/>
-                    <field name="sign_percentage" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}"/>
-                    <field name="remain_amount" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}"/>
-                    <field name="remain_percentage" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}"/>
-                </group>
-                
+                <field name="agreement_template_id" attrs="{'readonly': [('close', '=', True)]}"/>
+                <field name="close" />
+
             </field>
-            <xpath expr="//group" position="after">
-                <group string="Dynamic Description Preview">
-                    <field name="dynamic_description"  nolabel="1" />
-                </group>
+            <xpath expr="//notebook" position="inside">
+                <page name="agreement" string="Agreement">
+
+                    <group name="Agreement">
+                        <field name="opportunity_id" attrs="{'readonly': [('close', '=', True)]}"/>
+                        <field name="start_date" attrs="{'readonly': [('close', '=', True)]}"/>
+                        <field name="end_date" attrs="{'readonly': [('close', '=', True)]}"/>
+                        <field name="sign_date" attrs="{'readonly': [('close', '=', True)]}"/>
+                        <field name="agreement_id" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}" />
+                        <field name="sign_amount" attrs="{'invisible': ['|',('close', '=', True),('agreement_template_id', '=', False)]}" />
+                        <field name="sign_percentage" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}" />
+                        <field name="remain_amount" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}" />
+                        <field name="remain_percentage" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}" />
+                    </group>
+                    <group string="Dynamic Description Preview">
+                        <field name="dynamic_description" nolabel="1" attrs="{'readonly': [('close', '=', True)]}"/>
+                    </group>
+                </page>
             </xpath>
             <button name="action_cancel" position="before">
-                <button name="action_generate_template" string="Generate Agreement" type="object" states="draft,sent,sale" />
-                <button name="print_contract" string="Print Agreement" type="object" states="draft,sent,sale" attrs="{'invisible': [('agreement_id', '=', False)]}"/>
+                <button name="action_generate_template" string="Generate Agreement" type="object" attrs="{'invisible': ['|',('close', '=', True),('state','not in',('draft','sent','sale'))]}" />
+                <button name="print_contract" string="Print Agreement" type="object" states="draft,sent,sale" attrs="{'invisible': [('agreement_id', '=', False)]}" />
+                <button name="close_agreement_contract" string="Close Agreement" type="object" states="draft,sent,sale" attrs="{'invisible': [('agreement_id', '=', False)]}" />
             </button>
         </field>
     </record>

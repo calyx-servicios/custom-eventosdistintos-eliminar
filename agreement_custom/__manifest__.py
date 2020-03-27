@@ -30,7 +30,8 @@
         'sale',
         'agreement',
         'crm',
-        'sale_crm'
+        'sale_crm',
+        'crm_extension'
     ],
     'external_dependencies': {
     },
