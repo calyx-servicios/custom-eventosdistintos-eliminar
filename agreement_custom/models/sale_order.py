@@ -51,7 +51,7 @@ class SaleOrder(models.Model):
         string="Agreement Close", compute='_onchange_stage')
 
     @api.multi
-    @api.onchange('start_date', 'end_date', 'sign_date', 'agreement_id', 'partner_id', 'name')
+    @api.onchange('start_date', 'end_date', 'sign_date', 'agreement_id', 'partner_id', 'name','amount_total', 'invoice_ids', 'invoice_ids.state')
     def _onchange_dynamic(self):
         for sale in self:
             if sale.agreement_id:
@@ -71,7 +71,7 @@ class SaleOrder(models.Model):
 
     @api.multi
     @api.depends('payment_term_id', 'amount_total', 'invoice_ids', 'invoice_ids.state')
-    @api.onchange('payment_term_id', 'amount_total''invoice_ids', 'invoice_ids.state')
+    @api.onchange('payment_term_id', 'amount_total','invoice_ids', 'invoice_ids.state')
     def _onchange_payment_term(self):
         for sale in self:
             if sale.payment_term_id and sale.payment_term_id.plan:
@@ -93,7 +93,7 @@ class SaleOrder(models.Model):
                         sale.sign_words = words.upper()
 
     sign_amount = fields.Monetary(
-        string='Sign Amount', )
+        string='Sign Amount', compute=_onchange_payment_term)
     remain_amount = fields.Monetary(
         string='Remain Amount', compute=_onchange_payment_term)
     sign_percentage = fields.Monetary(
