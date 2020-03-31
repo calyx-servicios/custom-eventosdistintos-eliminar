@@ -3,7 +3,16 @@
 
 from odoo import api, fields, models, _
 from odoo.addons.base.res.res_partner import WARNING_MESSAGE, WARNING_HELP
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
+
 import datetime
+import pytz
+from dateutil import tz
+from pytz import timezone
+from dateutil.relativedelta import relativedelta
+
+from odoo import SUPERUSER_ID
+
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -54,6 +63,24 @@ class Agreement(models.Model):
 
     sale_id = fields.Many2one('sale.order', string='Sales Order')
 
+    def convert_date(self, date_to_convert):
+        """
+        Function to convert from stored UTC Odoo default timezone to user timezone
+        """
+        
+        timezone = pytz.timezone(self._context.get('tz') or 'UTC')
+        #utc_zone = tz.gettz('UTC')
+        utc_timezone = pytz.timezone('UTC')
+
+        #to_zone based on tz variable defined on context
+        to_zone = tz.gettz(str(timezone))
+
+        utc_date = datetime.datetime.strptime(
+            date_to_convert, DEFAULT_SERVER_DATETIME_FORMAT)
+        utc_date = utc_timezone.localize(utc_date)
+        converted_date = utc_date.astimezone(to_zone)
+        return converted_date
+
     @api.multi
     def get_event_name(self):
         name ='Evento'
@@ -64,37 +91,31 @@ class Agreement(models.Model):
     @api.multi
     def get_start_date(self):
         if self.start_date:
-            _logger.debug('Start Date > %s ', self.start_date)
-            start = datetime.datetime.strptime(
-                self.start_date, '%Y-%m-%d %H:%M:%S')
-            return start.strftime("%d/%m/%Y")
+            converted_date=self.convert_date(self.start_date)
+            return converted_date.strftime("%d/%m/%Y")
 
     @api.multi
     def get_start_time(self):
         if self.start_date:
-            _logger.debug('Start time > %s ', self.start_date)
-            start = datetime.datetime.strptime(
-                self.start_date, '%Y-%m-%d %H:%M:%S')
-            return start.strftime("%H:%M")
+            converted_date=self.convert_date(self.start_date)
+            return converted_date.strftime("%H:%M")
 
     @api.multi
     def get_end_date(self):
         if self.end_date:
-            _logger.debug('End Date > %s ', self.end_date)
-            end = datetime.datetime.strptime(
-                self.end_date, '%Y-%m-%d %H:%M:%S')
-            return end.strftime("%d/%m/%Y")
+            converted_date=self.convert_date(self.start_date)
+            return converted_date.strftime("%d/%m/%Y")
 
+        
     @api.multi
     def get_end_time(self):
         if self.end_date:
-            _logger.debug('End time > %s ', self.start_date)
-            end = datetime.datetime.strptime(
-                self.end_date, '%Y-%m-%d %H:%M:%S')
-            return end.strftime("%H:%M")
+            converted_date=self.convert_date(self.end_date)
+            return converted_date.strftime("%H:%M")
 
     @api.multi
     def get_sign_date(self):
         if self.sign_date:
             sign = datetime.datetime.strptime(self.sign_date, '%Y-%m-%d')
             return sign.strftime("%d de %B de %Y")
+    

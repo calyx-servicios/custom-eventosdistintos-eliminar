@@ -1,8 +1,13 @@
 # Copyright (C) 2019 - TODAY, Open Source Integrators
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 from num2words import num2words
+
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT,DEFAULT_SERVER_DATE_FORMAT
+import datetime
+import pytz
+
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -51,7 +56,7 @@ class SaleOrder(models.Model):
         string="Agreement Close", compute='_onchange_stage')
 
     @api.multi
-    @api.onchange('start_date', 'end_date', 'sign_date', 'agreement_id', 'partner_id', 'name','amount_total', 'invoice_ids', 'invoice_ids.state')
+    @api.onchange('start_date', 'end_date', 'sign_date', 'agreement_id', 'partner_id', 'name','amount_total', 'invoice_ids', 'invoice_ids.state','opportunity_id')
     def _onchange_dynamic(self):
         for sale in self:
             if sale.agreement_id:
@@ -66,8 +71,10 @@ class SaleOrder(models.Model):
         for sale in self:
             if sale.opportunity_id:
                 sale.partner_id = sale.opportunity_id.partner_id.id
-                sale.start_date = sale.opportunity_id.requested_date
-                sale.end_date = sale.opportunity_id.requested_date
+                requested_date=sale.opportunity_id.requested_date
+                sale.start_date = requested_date
+                sale.end_date = requested_date
+                
 
     @api.multi
     @api.depends('payment_term_id', 'amount_total', 'invoice_ids', 'invoice_ids.state')
@@ -96,9 +103,9 @@ class SaleOrder(models.Model):
         string='Sign Amount', compute=_onchange_payment_term)
     remain_amount = fields.Monetary(
         string='Remain Amount', compute=_onchange_payment_term)
-    sign_percentage = fields.Monetary(
+    sign_percentage = fields.Float(
         string='Sign Percentage', compute=_onchange_payment_term)
-    remain_percentage = fields.Monetary(
+    remain_percentage = fields.Float(
         string='Remain Percentage', compute=_onchange_payment_term)
     sign_words = fields.Char(
         string='Sign Amount Words', compute=_onchange_payment_term)
