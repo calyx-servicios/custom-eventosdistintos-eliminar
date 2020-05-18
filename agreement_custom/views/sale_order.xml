@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<odoo>
+    <!-- Copyright 2019 Open Source Integrators
+         License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+    <!-- Agreement Form View -->
+    <record id="sale_order_agreement_form_view" model="ir.ui.view">
+        <field name="name">sale.order.agreement.form.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+
+
+            <field name="partner_id" position="after">
+                <field name="agreement_template_id" attrs="{'readonly': [('close', '=', True)]}"/>
+                <field name="close" invisible="1"/>
+
+            </field>
+            <xpath expr="//notebook" position="inside">
+                <page name="agreement" string="Agreement">
+
+                    <group name="Agreement">
+                        <field name="opportunity_id" attrs="{'readonly': [('close', '=', True)]}"/>
+                        <field name="start_date" attrs="{'readonly': [('close', '=', True)]}"/>
+                        <field name="end_date" attrs="{'readonly': [('close', '=', True)]}"/>
+                        <field name="sign_date" attrs="{'readonly': [('close', '=', True)]}"/>
+                        <field name="agreement_id" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}" />
+                        <field name="sign_amount" attrs="{'invisible': ['|',('close', '=', True),('agreement_template_id', '=', False)]}" />
+                        <field name="sign_percentage" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}" /> 
+                        
+                        <field name="remain_amount" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}" />
+                        <field name="remain_percentage" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}" />
+                    </group>
+                    <group string="Dynamic Description Preview">
+                        <field name="dynamic_description" nolabel="1" attrs="{'readonly': [('close', '=', True)]}"/>
+                    </group>
+                </page>
+            </xpath>
+            <button name="action_cancel" position="before">
+                <button name="action_generate_template" string="Generate Agreement" type="object" attrs="{'invisible': ['|',('close', '=', True),('state','not in',('draft','sent','sale'))]}" />
+                <button name="print_contract" string="Print Agreement" type="object" states="draft,sent,sale" attrs="{'invisible': [('agreement_id', '=', False)]}" />
+                <button name="close_agreement_contract" string="Close Agreement" type="object" states="draft,sent,sale" attrs="{'invisible': [('agreement_id', '=', False)]}" />
+            </button>
+        </field>
+    </record>
+
+</odoo>
