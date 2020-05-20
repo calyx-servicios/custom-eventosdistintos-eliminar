@@ -19,7 +19,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:agreement_custom.field_sale_order_agreement_id
 #: model:ir.ui.view,arch_db:agreement_custom.sale_order_agreement_form_view
 msgid "Agreement"
-msgstr "Acuerdo"
+msgstr "Contrato"
 
 #. module: agreement_custom
 #: model:ir.model.fields,field_description:agreement_custom.field_sale_order_close
@@ -34,7 +34,7 @@ msgstr "Estado de Contrato"
 #. module: agreement_custom
 #: model:ir.model,name:agreement_custom.model_agreement_stage
 msgid "Agreement Stages"
-msgstr "Etapas de un Acuerdo"
+msgstr "Etapas de un Contrato"
 
 #. module: agreement_custom
 #: model:ir.model.fields,field_description:agreement_custom.field_sale_order_agreement_template_id
@@ -49,7 +49,7 @@ msgstr "Monto En Palabras"
 #. module: agreement_custom
 #: model:ir.ui.view,arch_db:agreement_custom.sale_order_agreement_form_view
 msgid "Close Agreement"
-msgstr "Cerrar Acuerdo"
+msgstr "Cerrar Contrato"
 
 #. module: agreement_custom
 #: model:ir.model.fields,help:agreement_custom.field_sale_order_dynamic_description
@@ -187,7 +187,7 @@ msgstr "Fecha cuando debe firmarse el Contrato"
 #. module: agreement_custom
 #: model:ir.model.fields,help:agreement_custom.field_sale_order_start_date
 msgid "When the agreement starts."
-msgstr "Fecha donde incia el acuerdo."
+msgstr "Fecha donde incia el Contrato."
 
 #. module: agreement_custom
 #: model:ir.model,name:agreement_custom.model_agreement

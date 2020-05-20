@@ -31,7 +31,8 @@
         'agreement',
         'crm',
         'sale_crm',
-        'crm_extension'
+        'crm_extension',
+        'payment_terms',
     ],
     'external_dependencies': {
     },
