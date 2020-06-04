@@ -1,24 +1,7 @@
 <?xml version="1.0" ?>
 <odoo>
-
-    <report
-    id="partner_agreement_contract_document"
-    model="agreement"
-    string="Dynamic Contract"
-    name="agreement_custom.report_agreement_document_sale"
-    file="agreement_custom.report_agreement_document_sale"
-    report_type="qweb-pdf"/>
-
-    <report
-            id="partner_agreement_contract_document_preview"
-            model="agreement"
-            string="Dynamic Contract Preview"
-            name="agreement_custom.report_agreement_document_sale"
-            file="agreement_custom.report_agreement_document_sale"
-            report_type="qweb-html"/>
-
     <template id="report_agreement_document_sale">
-        <t t-name="agreement.report_agreement_document">
+        <t t-name="report_agreement_document">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="doc">
                     <t t-call="web.external_layout">
@@ -35,6 +18,23 @@
             </t>
         </t>
     </template>
+
+    <report
+    id="partner_agreement_contract_document"
+    model="sale.order"
+    string="Dynamic Contract"
+    name="agreement_custom.report_agreement_document_sale"
+    file="agreement_custom.report_agreement_document_sale"
+    report_type="qweb-pdf"/>
+
+    <report
+            id="partner_agreement_contract_document_preview"
+            model="sale.order"
+            string="Dynamic Contract Preview"
+            name="agreement_custom.report_agreement_document_sale"
+            file="agreement_custom.report_agreement_document_sale"
+            report_type="qweb-html"/>
+
 
     <report
             id="sale_agreement_contract_document_preview"

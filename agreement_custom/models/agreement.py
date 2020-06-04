@@ -17,25 +17,28 @@ import logging
 _logger = logging.getLogger(__name__)
 
 # Main Agreement Section Records Model
+
+
 class AgreementStage(models.Model):
-    _inherit= 'agreement.stage'
-   
+    _inherit = 'agreement.stage'
+
     close_stage = fields.Boolean(
         string="Is Close Stage",
         help="This sets this stage as the Close stage"
     )
 
+
 class Agreement(models.Model):
     _inherit = 'agreement'
 
-    # compute the dynamic content for mako expression inside a try in case the user fuck it
-    @api.multi
-    @api.onchange('start_date','end_date','sign_date','description','sale_id','sale_id.partner')
-    def _compute_dynamic_description(self):
-        try:
-            super(Agreement, self)._compute_dynamic_description()
-        except:
-            pass
+    # # compute the dynamic content for mako expression inside a try in case the user fuck it
+    # @api.multi
+    # @api.onchange('start_date','end_date','sign_date','description','sale_id','sale_id.partner')
+    # def _compute_dynamic_description(self):
+    #     try:
+    #         super(Agreement, self)._compute_dynamic_description()
+    #     except:
+    #         pass
 
     description = fields.Html(
         string="Description",
@@ -67,12 +70,12 @@ class Agreement(models.Model):
         """
         Function to convert from stored UTC Odoo default timezone to user timezone
         """
-        
+
         timezone = pytz.timezone(self._context.get('tz') or 'UTC')
         #utc_zone = tz.gettz('UTC')
         utc_timezone = pytz.timezone('UTC')
 
-        #to_zone based on tz variable defined on context
+        # to_zone based on tz variable defined on context
         to_zone = tz.gettz(str(timezone))
 
         utc_date = datetime.datetime.strptime(
@@ -83,7 +86,7 @@ class Agreement(models.Model):
 
     @api.multi
     def get_event_name(self):
-        name ='Evento'
+        name = 'Evento'
         if self.sale_id and self.sale_id.opportunity_id:
             name = self.sale_id.opportunity_id.name
         return name
@@ -91,26 +94,25 @@ class Agreement(models.Model):
     @api.multi
     def get_start_date(self):
         if self.start_date:
-            converted_date=self.convert_date(self.start_date)
+            converted_date = self.convert_date(self.start_date)
             return converted_date.strftime("%d/%m/%Y")
 
     @api.multi
     def get_start_time(self):
         if self.start_date:
-            converted_date=self.convert_date(self.start_date)
+            converted_date = self.convert_date(self.start_date)
             return converted_date.strftime("%H:%M")
 
     @api.multi
     def get_end_date(self):
         if self.end_date:
-            converted_date=self.convert_date(self.start_date)
+            converted_date = self.convert_date(self.start_date)
             return converted_date.strftime("%d/%m/%Y")
 
-        
     @api.multi
     def get_end_time(self):
         if self.end_date:
-            converted_date=self.convert_date(self.end_date)
+            converted_date = self.convert_date(self.end_date)
             return converted_date.strftime("%H:%M")
 
     @api.multi
@@ -118,4 +120,3 @@ class Agreement(models.Model):
         if self.sign_date:
             sign = datetime.datetime.strptime(self.sign_date, '%Y-%m-%d')
             return sign.strftime("%d de %B de %Y")
-    

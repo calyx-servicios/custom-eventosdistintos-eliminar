@@ -4,12 +4,13 @@
 from odoo import api, fields, models, _
 from num2words import num2words
 
-from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT,DEFAULT_SERVER_DATE_FORMAT
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT, DEFAULT_SERVER_DATE_FORMAT
 import datetime
 import pytz
 
 import logging
 _logger = logging.getLogger(__name__)
+
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
@@ -38,12 +39,13 @@ class SaleOrder(models.Model):
     @api.multi
     @api.depends('agreement_id', 'agreement_id.stage_id')
     def _onchange_stage(self):
-        
+
         for sale in self:
 
             close = False
             if sale.agreement_id:
-                _logger.debug('_onchange_stage====>%s', self.agreement_id.stage_id)
+                _logger.debug('_onchange_stage====>%s',
+                              self.agreement_id.stage_id)
                 stage = self.env['agreement.stage'].search(
                     [('close_stage', '=', True)])
                 if stage:
@@ -56,7 +58,7 @@ class SaleOrder(models.Model):
         string="Agreement Close", compute='_onchange_stage')
 
     @api.multi
-    @api.onchange('start_date', 'end_date', 'sign_date', 'agreement_id', 'partner_id', 'name','amount_total', 'invoice_ids', 'invoice_ids.state','opportunity_id')
+    @api.onchange('start_date', 'end_date', 'sign_date', 'agreement_id', 'partner_id', 'name', 'amount_total', 'invoice_ids', 'invoice_ids.state', 'opportunity_id')
     def _onchange_dynamic(self):
         for sale in self:
             if sale.agreement_id:
@@ -71,14 +73,12 @@ class SaleOrder(models.Model):
         for sale in self:
             if sale.opportunity_id:
                 sale.partner_id = sale.opportunity_id.partner_id.id
-                requested_date=sale.opportunity_id.requested_date
+                requested_date = sale.opportunity_id.requested_date
                 sale.start_date = requested_date
                 sale.end_date = requested_date
-                
 
     @api.multi
     @api.depends('payment_term_id', 'amount_total', 'invoice_ids', 'invoice_ids.state')
-    @api.onchange('payment_term_id', 'amount_total','invoice_ids', 'invoice_ids.state')
     def _onchange_payment_term(self):
         for sale in self:
             if sale.payment_term_id and sale.payment_term_id.plan:
@@ -87,13 +87,13 @@ class SaleOrder(models.Model):
                 for invoice in sale.invoice_ids:
                     if invoice.state not in ('draft', 'canceled'):
                         invoiced += invoice.amount_total
-                if split > 0:
+                if sale.payment_term_id:
                     sale.sign_amount = invoiced
-                    sale.remain_amount = sale.amount_total-sale.sign_amount
+                    sale.remain_amount = sale.amount_total - sale.sign_amount
                     if sale.amount_total > 0:
                         sale.sign_percentage = round(
-                            100*(sale.sign_amount/sale.amount_total), 2)
-                        sale.remain_percentage = 100-sale.sign_percentage
+                            100 * (sale.sign_amount / sale.amount_total), 2)
+                        sale.remain_percentage = 100 - sale.sign_percentage
                         words = num2words(sale.amount_total, lang='es')
                         sale.amount_words = words.upper()
                         words = num2words(sale.sign_amount, lang='es')
@@ -120,7 +120,7 @@ class SaleOrder(models.Model):
             if not order.agreement_id:
                 if order.agreement_template_id:
                     name = order.agreement_template_id.name
-                    name += '| '+order.name
+                    name += '| ' + order.name
                     order.agreement_id = order.agreement_template_id.copy(default={
                         'name': name,
                         'is_template': False,
