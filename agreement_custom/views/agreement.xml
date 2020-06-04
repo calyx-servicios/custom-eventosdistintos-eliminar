@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <record id="agreement_sale_form_view" model="ir.ui.view">
+        <field name="name">agreement.form.view</field>
+        <field name="model">agreement</field>
+        <field name="inherit_id" ref="agreement.partner_agreement_form_view" />
+        <field name="arch" type="xml">
+            <page name="signature" position="after">
+                <page name="sales" string="Sales">
+                    <group>
+                        <group id="sale-left">
+                            <field name="sale_id" readonly="1" />
+                        </group>
+                        <group id="sale-right" />
+                    </group>
+                </page>
+            </page>
+            <field name="description" position="replace">
+                <notebook>
+                    <page name="description" string="Description">
+                        <group string="Description">
+                            <field name="description" required="True" nolabel="1" />
+                        </group>
+                    </page>
+                    <page name="dynamic" string="Dynamic">
+                        <group string="Dynamic Description Preview">
+                            <field name="dynamic_description" nolabel="1" />
+                        </group>
+                    </page>
+                </notebook>
+
+            </field>
+            <field name="end_date" position="after">
+                <field name="sign_date" />
+            </field>
+        </field>
+    </record>
+
+    <record id="partner_agreement_stage_form_view" model="ir.ui.view">
+        <field name="name">Agreement Stage Form</field>
+        <field name="model">agreement.stage</field>
+        <field name="inherit_id" ref="agreement.partner_agreement_stage_form_view" />
+
+        <field name="arch" type="xml">
+            <field name="fold" position="after">
+                <field name="close_stage" />
+            </field>
+        </field>
+    </record>
+</odoo>
