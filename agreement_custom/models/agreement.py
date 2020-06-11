@@ -109,7 +109,7 @@ class Agreement(models.Model):
     @api.multi
     def get_end_date(self):
         if self.end_date:
-            converted_date = self.convert_date(self.start_date)
+            converted_date = self.convert_date(self.end_date)
             return converted_date.strftime("%d/%m/%Y")
 
     @api.multi

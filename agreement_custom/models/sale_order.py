@@ -172,6 +172,9 @@ class SaleOrder(models.Model):
                             }
                         )
             if order.agreement_id:
+                order.agreement_id.start_date = order.start_date
+                order.agreement_id.end_date = order.end_date
+                order.agreement_id.sign_date = order.sign_date
                 order.dynamic_description = (
                     order.agreement_id.dynamic_description
                 )
