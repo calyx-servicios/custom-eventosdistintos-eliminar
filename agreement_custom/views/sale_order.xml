@@ -13,6 +13,7 @@
 
             <field name="partner_id" position="after">
                 <field name="agreement_template_id" attrs="{'readonly': [('close', '=', True)]}"/>
+                <field name="agreement_id" invisible="1"/>
                 <field name="close" invisible="1"/>
 
             </field>
@@ -26,8 +27,8 @@
                         <field name="sign_date" attrs="{'readonly': [('close', '=', True)]}"/>
                         <field name="agreement_id" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}" />
                         <field name="sign_amount" attrs="{'invisible': ['|',('close', '=', True),('agreement_template_id', '=', False)]}" />
-                        <field name="sign_percentage" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}" /> 
-                        
+                        <field name="sign_percentage" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}" />
+
                         <field name="remain_amount" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}" />
                         <field name="remain_percentage" readonly="1" attrs="{'invisible': [('agreement_template_id', '=', False)]}" />
                     </group>
@@ -39,7 +40,7 @@
             <button name="action_cancel" position="before">
                 <button name="action_generate_template" string="Generate Agreement" type="object" attrs="{'invisible': ['|',('close', '=', True),('state','not in',('draft','sent','sale'))]}" />
                 <button name="print_contract" string="Print Agreement" type="object" states="draft,sent,sale" attrs="{'invisible': [('agreement_id', '=', False)]}" />
-                <button name="close_agreement_contract" string="Close Agreement" type="object" states="draft,sent,sale" attrs="{'invisible': [('agreement_id', '=', False)]}" />
+                <button name="close_agreement_contract" string="Close Agreement" type="object" states="draft,sent,sale" attrs="{'invisible': ['|',('agreement_id', '=', False), '|', ('close', '=', True)]}" />
             </button>
         </field>
     </record>
