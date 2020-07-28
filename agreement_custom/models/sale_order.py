@@ -108,8 +108,7 @@ class SaleOrder(models.Model):
                         sale.amount_words = words.upper()
                         words = num2words(sale.sign_amount, lang="es")
                         sale.sign_words = words.upper()
-                sale.splitted_balance =
-                    sale.remain_amount / sale.payment_term_id.plan_split
+                sale.splitted_balance = sale.remain_amount / sale.payment_term_id.plan_split
 
     sign_amount = fields.Monetary(
         string="Sign Amount", compute=_onchange_payment_term
