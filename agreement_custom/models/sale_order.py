@@ -5,8 +5,6 @@ from odoo import api, fields, models
 from num2words import num2words
 import logging
 
-_logger = logging.getLogger(__name__)
-
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
@@ -41,9 +39,6 @@ class SaleOrder(models.Model):
 
             close = False
             if sale.agreement_id:
-                _logger.debug(
-                    "_onchange_stage====>%s", self.agreement_id.stage_id
-                )
                 stage = self.env["agreement.stage"].search(
                     [("close_stage", "=", True)]
                 )
@@ -96,7 +91,7 @@ class SaleOrder(models.Model):
     def _onchange_payment_term(self):
         for sale in self:
             if sale.payment_term_id and sale.payment_term_id.plan:
-                # split = sale.payment_term_id.plan_split
+                split = sale.payment_term_id.plan_split
                 invoiced = 0.0
                 for invoice in sale.invoice_ids:
                     if invoice.state not in ("draft", "canceled"):
@@ -113,6 +108,8 @@ class SaleOrder(models.Model):
                         sale.amount_words = words.upper()
                         words = num2words(sale.sign_amount, lang="es")
                         sale.sign_words = words.upper()
+                sale.splitted_balance =
+                    sale.remain_amount / sale.payment_term_id.plan_split
 
     sign_amount = fields.Monetary(
         string="Sign Amount", compute=_onchange_payment_term
@@ -134,6 +131,9 @@ class SaleOrder(models.Model):
     )
     stage_id = fields.Many2one(
         related="agreement_id.stage_id", string="Agreement Stage"
+    )
+    splitted_balance = fields.Monetary(
+        string="Splitted Balance", compute=_onchange_payment_term
     )
 
     @api.multi
