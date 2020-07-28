@@ -9,10 +9,8 @@
                             <h1 t-field="doc.name"/>
                             <div name="description">
                                     <div t-raw="doc.dynamic_description" > </div>
-                                
                             </div>
                         </div>
-                        
                     </t>
                 </t>
             </t>
