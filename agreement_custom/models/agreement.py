@@ -8,12 +8,6 @@ import datetime
 import pytz
 from dateutil import tz
 
-import logging
-
-_logger = logging.getLogger(__name__)
-
-# Main Agreement Section Records Model
-
 
 class AgreementStage(models.Model):
     _inherit = "agreement.stage"
@@ -25,16 +19,6 @@ class AgreementStage(models.Model):
 
 class Agreement(models.Model):
     _inherit = "agreement"
-
-    # # compute the dynamic content for mako expression inside a try in
-    # case the user fuck it
-    # @api.multi
-    # @api.onchange('start_date','end_date','sign_date','description','sale_id','sale_id.partner')
-    # def _compute_dynamic_description(self):
-    #     try:
-    #         super(Agreement, self)._compute_dynamic_description()
-    #     except:
-    #         pass
 
     description = fields.Html(
         string="Description",
@@ -74,7 +58,6 @@ class Agreement(models.Model):
         """
 
         timezone = pytz.timezone(self._context.get("tz") or "UTC")
-        # utc_zone = tz.gettz('UTC')
         utc_timezone = pytz.timezone("UTC")
 
         # to_zone based on tz variable defined on context
