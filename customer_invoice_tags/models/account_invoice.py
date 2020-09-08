@@ -4,7 +4,7 @@ class AccountInvoice(models.Model):
 
     @api.multi
     def action_invoice_open(self):
-        tag_id = self.env.ref('custom_ed_tags.delay').id 
+        tag_id = self.env.ref('customer_invoice_tags.delay').id 
         for acc in self:
             for rec in acc.journal_id: 
                 if rec.code == "MRO":
