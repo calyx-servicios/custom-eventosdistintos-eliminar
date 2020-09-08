@@ -1,16 +1,14 @@
 # -*- coding: utf-8 -*-
 
 {
-    'name': 'Custom ED Tags',
+    'name': 'Customer Invoice Tags',
     'version': '11.0.1',
     'category': 'Tools',
     'author': "Calyx",
     'website': 'www.calyxservicios.com.ar',
     'license': 'AGPL-3',
-    'summary': '''Eventos Distintos Tags Customization 1.0''',
+    'summary': '''Tags customization for customer invoice 1.0''',
     'depends': [
-        'base',
-        'payment_terms'
     ],
     'external_dependencies': {
     },
