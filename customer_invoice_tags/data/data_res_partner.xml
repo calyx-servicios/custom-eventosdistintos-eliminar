@@ -6,19 +6,19 @@
             <field name="name">With Delay</field>
             <field name="active">True</field>
             <field name="parent_id"></field>
-            <field name="color">2</field>
+            <field name="color">1</field>
         </record>
         <record id="canceled_event" model="res.partner.category">
             <field name="name">Canceled event</field>
             <field name="active">True</field>
             <field name="parent_id"></field>
-            <field name="color">3</field>
+            <field name="color">9</field>
         </record>
         <record id="credit_note" model="res.partner.category">
             <field name="name">With Credit Note</field>
             <field name="active">True</field>
             <field name="parent_id"></field>
-            <field name="color">4</field>
+            <field name="color">3</field>
         </record>
     </data>
 </odoo>
