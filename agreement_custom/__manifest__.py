@@ -20,7 +20,7 @@
 ##############################################################################
 {
     'name': 'Agreement Custom',
-    'version': '11.0.1.1.0',
+    'version': '11.0.2.0.0',
     'category': 'Sale',
     'author': "Calyx",
     'website': 'www.calyxservicios.com.ar',
