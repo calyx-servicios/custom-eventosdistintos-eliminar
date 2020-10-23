@@ -17,7 +17,7 @@
             <xpath expr="//field[@name='tag_ids']" position="after">
                 <field name="event_type_id"  widget='selection'/>
             </xpath>
-            <xpath expr="//button[@name='660']" position="attributes">
+            <xpath expr="//button[@name='%(sale_crm.sale_action_quotations_new)d']" position="attributes">
                 <attribute name="context">{
                                 'search_default_partner_id': partner_id,
                                 'default_partner_id': partner_id,

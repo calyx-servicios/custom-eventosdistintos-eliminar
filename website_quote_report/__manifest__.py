@@ -6,7 +6,7 @@
     "category": "Productivity",
     "license": "LGPL-3",
     "website": "www.calyxservicios.com.ar",
-    "depends": ["web","website_quote","sale"],
+    "depends": ["web","website_quote","sale","sale_crm"],
     "data": [
         "views/crm_lead_view.xml",
         "views/crm_event_type_view.xml",
