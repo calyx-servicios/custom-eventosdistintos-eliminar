@@ -30,8 +30,12 @@
     Preview and print pdf reports in browser instead of downloading them.
     Based in [prt_report_attachment_preview] By: Ivan Sokolov, Cetmix.
 """,
-    "depends": ["base", "web"],
+    "depends": ["base", "web","website_quote","sale"],
     "data": [
+        "views/crm_lead_view.xml",
+        "views/crm_event_type_view.xml",
+        "views/sale_order_view.xml",
+        "report/quotation_content.xml",
         "views/prt_report_preview_template.xml",
         "views/ir_actions_report.xml",
     ],
