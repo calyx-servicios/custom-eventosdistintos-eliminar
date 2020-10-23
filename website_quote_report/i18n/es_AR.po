@@ -61,12 +61,12 @@ msgstr "Mostrar Nombre"
 #: model:ir.ui.view,arch_db:report_web_preview_print.view_crm_event_type_search
 #: model:ir.ui.view,arch_db:report_web_preview_print.view_crm_event_type_tree
 msgid "Event Type"
-msgstr "TIpo de Evento"
+msgstr "Tipo de Evento"
 
 #. module: report_web_preview_print
 #: model:ir.ui.view,arch_db:report_web_preview_print.quotation_content
 msgid "Event Type:"
-msgstr "TIpo de Evento:"
+msgstr "Tipo de Evento:"
 
 #. module: report_web_preview_print
 #: model:ir.model.fields,field_description:report_web_preview_print.field_crm_event_type_id
