@@ -1,19 +1,103 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* report_web_preview_print
+# 	* report_web_preview_print
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 11.0-20191106\n"
+"Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-23 16:30+0000\n"
-"PO-Revision-Date: 2020-04-23 16:30+0000\n"
+"POT-Creation-Date: 2020-10-23 14:18+0000\n"
+"PO-Revision-Date: 2020-10-23 11:30-0300\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"Language: es_AR\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#. module: report_web_preview_print
+#: model:ir.model.fields,field_description:report_web_preview_print.field_crm_event_type_active
+msgid "Active"
+msgstr "Activo"
+
+#. module: report_web_preview_print
+#: model:ir.ui.view,arch_db:report_web_preview_print.quotation_content
+msgid "Bill To:"
+msgstr "Facturar a:"
+
+#. module: report_web_preview_print
+#: model:ir.actions.act_window,help:report_web_preview_print.action_crm_event_type_view
+msgid "Click to set a new Event Type."
+msgstr "Haga click para crear un nuevo tipo de evento"
+
+#. module: report_web_preview_print
+#: model:ir.model.fields,field_description:report_web_preview_print.field_crm_event_type_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: report_web_preview_print
+#: model:ir.model.fields,field_description:report_web_preview_print.field_crm_event_type_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: report_web_preview_print
+#: model:ir.ui.view,arch_db:report_web_preview_print.quotation_content
+msgid "Customer:"
+msgstr "Cliente:"
+
+#. module: report_web_preview_print
+#: model:ir.model.fields,field_description:report_web_preview_print.field_crm_event_type_display_name
+msgid "Display Name"
+msgstr "Mostrar Nombre"
+
+#. module: report_web_preview_print
+#: model:ir.actions.act_window,name:report_web_preview_print.action_crm_event_type_view
+#: model:ir.model.fields,field_description:report_web_preview_print.field_crm_event_type_event_type
+#: model:ir.model.fields,field_description:report_web_preview_print.field_crm_lead_event_type_id
+#: model:ir.model.fields,field_description:report_web_preview_print.field_sale_order_event_type_id
+#: model:ir.ui.menu,name:report_web_preview_print.menu_crm_event_type
+#: model:ir.ui.view,arch_db:report_web_preview_print.view_crm_event_type_search
+#: model:ir.ui.view,arch_db:report_web_preview_print.view_crm_event_type_tree
+msgid "Event Type"
+msgstr "TIpo de Evento"
+
+#. module: report_web_preview_print
+#: model:ir.ui.view,arch_db:report_web_preview_print.quotation_content
+msgid "Event Type:"
+msgstr "TIpo de Evento:"
+
+#. module: report_web_preview_print
+#: model:ir.model.fields,field_description:report_web_preview_print.field_crm_event_type_id
+msgid "ID"
+msgstr "ID"
+
+#. module: report_web_preview_print
+#: model:ir.model.fields,field_description:report_web_preview_print.field_crm_event_type___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: report_web_preview_print
+#: model:ir.model.fields,field_description:report_web_preview_print.field_crm_event_type_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización realizada por"
+
+#. module: report_web_preview_print
+#: model:ir.model.fields,field_description:report_web_preview_print.field_crm_event_type_write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: report_web_preview_print
+#: model:ir.model,name:report_web_preview_print.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Iniciativa/Oportunidad"
+
+#. module: report_web_preview_print
+#: model:ir.model.fields,field_description:report_web_preview_print.field_crm_lead_name_honoree
+#: model:ir.model.fields,field_description:report_web_preview_print.field_sale_order_name_honoree
+msgid "Name of the Honoree"
+msgstr "Nombre del Agasajado"
 
 #. module: report_web_preview_print
 #: model:ir.model.fields,field_description:report_web_preview_print.field_ir_act_report_xml_preview
@@ -26,7 +110,57 @@ msgid "Print"
 msgstr "Imprimir"
 
 #. module: report_web_preview_print
+#: model:ir.model,name:report_web_preview_print.model_sale_order
+msgid "Quotation"
+msgstr "Presupuesto"
+
+#. module: report_web_preview_print
+#: model:ir.model.fields,field_description:report_web_preview_print.field_sale_order_requested_date
+msgid "Requested Date"
+msgstr "Fecha Solicitada"
+
+#. module: report_web_preview_print
+#: model:ir.ui.view,arch_db:report_web_preview_print.quotation_content
+msgid "Requested Date:"
+msgstr "Fecha solicitada:"
+
+#. module: report_web_preview_print
+#: model:ir.model.fields,field_description:report_web_preview_print.field_crm_event_type_sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: report_web_preview_print
+#: model:ir.ui.view,arch_db:report_web_preview_print.quotation_content
+msgid "Ship To:"
+msgstr "Enviar a:"
+
+#. module: report_web_preview_print
+#: model:ir.ui.view,arch_db:report_web_preview_print.view_crm_event_type_form
+msgid "Type"
+msgstr "Tipo"
+
+#. module: report_web_preview_print
+#: code:addons/report_web_preview_print/models/crm_event_type.py:19
+#, python-format
+msgid "You are trying to delete a record that is still referenced in one o more crm, try to archive it."
+msgstr "Está intentando eliminar un registro al que todavía se hace referencia en uno o más crm, intente archivarlo."
+
+#. module: report_web_preview_print
+#: model:ir.model,name:report_web_preview_print.model_crm_event_type
+msgid "crm.event.type"
+msgstr "crm.event.type"
+
+#. module: report_web_preview_print
+#: model:ir.ui.view,arch_db:report_web_preview_print.quotation_content
+msgid "honoree:"
+msgstr "Agasajado:"
+
+#. module: report_web_preview_print
 #: model:ir.model,name:report_web_preview_print.model_ir_actions_report
 msgid "ir.actions.report"
 msgstr "ir.actions.report"
 
+#. module: report_web_preview_print
+#: model:ir.model,name:report_web_preview_print.model_sale_event_type
+msgid "sale.event.type"
+msgstr "sale.event.type"
