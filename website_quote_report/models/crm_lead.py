@@ -9,4 +9,4 @@ class CrmLead(models.Model):
         comodel_name="crm.event.type",
         string="Event Type",
     )
-
+    requested_date = fields.Datetime(string="Request Date")

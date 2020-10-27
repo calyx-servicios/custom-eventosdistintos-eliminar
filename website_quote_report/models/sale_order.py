@@ -9,5 +9,4 @@ class SaleOrder(models.Model):
         comodel_name="crm.event.type",
         string="Event Type",
     )
-
-    requested_date = fields.Date(string="Requested Date")
+    requested_date = fields.Datetime(string="Requested Date")
