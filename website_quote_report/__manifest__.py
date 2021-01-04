@@ -8,6 +8,7 @@
     "website": "www.calyxservicios.com.ar",
     "depends": ["web","website_quote","sale","sale_crm"],
     "data": [
+        "security/ir.model.access.csv",
         "views/crm_lead_view.xml",
         "views/crm_event_type_view.xml",
         "views/sale_order_view.xml",
