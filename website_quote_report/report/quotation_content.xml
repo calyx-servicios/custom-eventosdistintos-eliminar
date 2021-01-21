@@ -43,10 +43,11 @@
                 </div>
             </div>
             <div class="clearfix"/>
-            <div t-if="quotation.team_id.name">
-                <label class="col-sm-5 col-xs-5 text-right">Sales Channel:</label>
-                <div class="col-sm-7 col-xs-7">
-                    <span t-field="quotation.team_id.name"/>
+                <div t-if="quotation.team_id.name">
+                    <label class="col-sm-5 col-xs-5 text-right">Sales Channel:</label>
+                    <div class="col-sm-7 col-xs-7">
+                        <span t-field="quotation.team_id.name"/>
+                    </div>
                 </div>
             </div>
             <div class="clearfix"/>
