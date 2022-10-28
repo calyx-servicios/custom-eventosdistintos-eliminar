@@ -1,0 +1,75 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* pos_electronic_receipt_invoice
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-28 18:03+0000\n"
+"PO-Revision-Date: 2022-10-28 18:03+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pos_electronic_receipt_invoice
+#. openerp-web
+#: code:addons/pos_electronic_receipt_invoice/static/src/xml/pos_electronic_receipt_invoice.xml:8
+#: code:addons/pos_electronic_receipt_invoice/static/src/xml/pos_electronic_receipt_invoice.xml:26
+#, python-format
+msgid "CAE number:"
+msgstr "CAE:"
+
+#. module: pos_electronic_receipt_invoice
+#: model:ir.ui.view,arch_db:pos_electronic_receipt_invoice.pos_config_duplicate_receipt
+msgid "E-Invoice Ticket"
+msgstr "Ticket Electrónico"
+
+#. module: pos_electronic_receipt_invoice
+#. openerp-web
+#: code:addons/pos_electronic_receipt_invoice/static/src/xml/pos_electronic_receipt_invoice.xml:24
+#, python-format
+msgid "Invoice Number:"
+msgstr "Número de factura:"
+
+#. module: pos_electronic_receipt_invoice
+#. openerp-web
+#: code:addons/pos_electronic_receipt_invoice/static/src/xml/pos_electronic_receipt_invoice.xml:6
+#, python-format
+msgid "Invoice number:"
+msgstr "Número de factura:"
+
+#. module: pos_electronic_receipt_invoice
+#: model:ir.model.fields,field_description:pos_electronic_receipt_invoice.field_pos_config_pos_auto_invoice
+#: model:ir.ui.view,arch_db:pos_electronic_receipt_invoice.pos_config_duplicate_receipt
+msgid "POS auto invoice"
+msgstr "POS Factura automática"
+
+#. module: pos_electronic_receipt_invoice
+#: model:ir.model.fields,help:pos_electronic_receipt_invoice.field_pos_config_pos_auto_invoice
+#: model:ir.ui.view,arch_db:pos_electronic_receipt_invoice.pos_config_duplicate_receipt
+msgid "POS auto to checked to invoice button"
+msgstr "Generar siempre factura"
+
+#. module: pos_electronic_receipt_invoice
+#. openerp-web
+#: code:addons/pos_electronic_receipt_invoice/static/src/xml/pos_electronic_receipt_invoice.xml:16
+#: code:addons/pos_electronic_receipt_invoice/static/src/xml/pos_electronic_receipt_invoice.xml:34
+#, python-format
+msgid "QR Code"
+msgstr "Código QR"
+
+#. module: pos_electronic_receipt_invoice
+#: model:ir.model.fields,field_description:pos_electronic_receipt_invoice.field_pos_config_receipt_invoice_number
+#: model:ir.ui.view,arch_db:pos_electronic_receipt_invoice.pos_config_duplicate_receipt
+msgid "Receipt show invoice information"
+msgstr "Mostrar información de la factura en el ticket"
+
+#. module: pos_electronic_receipt_invoice
+#: model:ir.model,name:pos_electronic_receipt_invoice.model_pos_config
+msgid "pos.config"
+msgstr "pos.config"
+

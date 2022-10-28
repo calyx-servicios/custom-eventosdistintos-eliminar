@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="point_of_sale.template" xml:space="preserve">
+    <t t-extend="PosTicket">
+        <t t-jquery="t[t-if*='receipt.header']" t-operation="before">
+            <t t-if="order.invoice_number and widget.pos.config.receipt_invoice_number">
+            	<div>--------------------------------</div>
+                Invoice number: <t t-esc="order.invoice_number"/><br />
+                <t t-if="order.afip_auth_code and widget.pos.config.receipt_invoice_number">
+                	CAE number: <t t-esc="order.afip_auth_code"/><br />
+                </t>
+                <br />
+            </t>
+        </t>
+        <t t-jquery="t[t-if*='receipt.footer']" t-operation="after">
+        	<t t-if="order.afip_qr_code and widget.pos.config.receipt_invoice_number">
+        		<img t-if="order.afip_qr_code" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', order.afip_qr_code, 400, 400)" alt="QR Code" style="height:100px;margin-left: 5px"/>
+        	</t>
+        </t>
+    </t>
+
+    <t t-extend="XmlReceipt">
+        <t t-jquery="t[t-if*='receipt.cashier']" t-operation="before">
+            <t t-if="order.invoice_number and widget.pos.config.receipt_invoice_number">
+                <div>--------------------------------</div>
+                Invoice Number: <t t-esc="order.invoice_number"/><br />
+                <t t-if="afip_auth_code and widget.pos.config.receipt_invoice_number">
+                	CAE number: <t t-esc="order.afip_auth_code"/><br />
+                </t>
+                <br />
+            </t>
+        </t>
+        <t t-jquery="t[t-if*='receipt.footer_xml']" t-operation="before">
+        	<t t-if="order.afip_qr_code and widget.pos.config.receipt_invoice_number">
+        		<img t-if="order.afip_qr_code" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', order.afip_qr_code, 400, 400)" alt="QR Code" style="height:100px;margin-left: 5px"/>
+        	</t>
+        </t>
+    </t>
+</templates>
