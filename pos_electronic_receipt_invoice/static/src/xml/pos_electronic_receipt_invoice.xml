@@ -3,12 +3,12 @@
     <t t-extend="PosTicket">
         <t t-jquery="t[t-if*='receipt.header']" t-operation="before">
             <t t-if="order.invoice_number and widget.pos.config.receipt_invoice_number">
-            	<div>--------------------------------</div>
+            	<div>------------------------------------------</div>
                 Invoice number: <t t-esc="order.invoice_number"/><br />
                 <t t-if="order.afip_auth_code and widget.pos.config.receipt_invoice_number">
                 	CAE number: <t t-esc="order.afip_auth_code"/><br />
                 </t>
-                <div>--------------------------------</div>
+                <div>------------------------------------------</div>
                 <br />
             </t>
         </t>
@@ -35,12 +35,12 @@
     <t t-extend="XmlReceipt">
         <t t-jquery="t[t-if*='receipt.cashier']" t-operation="before">
             <t t-if="order.invoice_number and widget.pos.config.receipt_invoice_number">
-                <div>--------------------------------</div>
+                <div>------------------------------------------</div>
                 Invoice Number: <t t-esc="order.invoice_number"/><br />
                 <t t-if="afip_auth_code and widget.pos.config.receipt_invoice_number">
                 	CAE number: <t t-esc="order.afip_auth_code"/><br />
                 </t>
-                <div>--------------------------------</div>
+                <div>------------------------------------------</div>
                 <br />
             </t>
         </t>
