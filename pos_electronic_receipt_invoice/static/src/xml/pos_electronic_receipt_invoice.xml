@@ -13,7 +13,18 @@
         </t>
         <t t-jquery="t[t-if*='receipt.footer']" t-operation="after">
         	<t t-if="order.afip_qr_code and widget.pos.config.receipt_invoice_number">
-        		<img t-if="order.afip_qr_code" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', order.afip_qr_code, 400, 400)" alt="QR Code" style="height:100px;margin-left: 5px"/>
+        		<script type="text/javascript">
+			        var lot_name = "<t t-esc="order.afip_qr_code"/>";
+			        var qrcode = new QRCode(receipt.qr_string , {
+			            text: "http://jindo.dev.naver.com/collie",
+			            width: 100,
+			            height: 100,
+			            colorDark : "#000000",
+			            colorLight : "#ffffff",
+			            correctLevel : QRCode.CorrectLevel.H
+			        });
+			        qrcode.makeCode(order.afip_qr_code);
+			    </script>
         	</t>
         </t>
     </t>
@@ -31,7 +42,18 @@
         </t>
         <t t-jquery="t[t-if*='receipt.footer_xml']" t-operation="before">
         	<t t-if="order.afip_qr_code and widget.pos.config.receipt_invoice_number">
-        		<img t-if="order.afip_qr_code" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', order.afip_qr_code, 400, 400)" alt="QR Code" style="height:100px;margin-left: 5px"/>
+        		<script type="text/javascript">
+			        var lot_name = "<t t-esc="order.afip_qr_code"/>";
+			        var qrcode = new QRCode(receipt.qr_string , {
+			            text: "http://jindo.dev.naver.com/collie",
+			            width: 100,
+			            height: 100,
+			            colorDark : "#000000",
+			            colorLight : "#ffffff",
+			            correctLevel : QRCode.CorrectLevel.H
+			        });
+			        qrcode.makeCode(order.afip_qr_code);
+			    </script>
         	</t>
         </t>
     </t>
