@@ -35,7 +35,7 @@ odoo.define('pos_electronic_receipt_invoice', function (require) {
                     if (orders.length > 0) {
                         if (orders[0]['invoice_id']) {
 							var invoice_id = orders[0]['invoice_id'][0];
-                            var invoice_number = orders[0]['invoice_id'][1].split(" ")[0];
+                            var invoice_number = orders[0]['invoice_id'][1].split(" ")[1];
                             self.receipt_data['order']['invoice_number'] = invoice_number;
                             rpc.query({
 							     model: 'account.invoice',
@@ -70,7 +70,7 @@ odoo.define('pos_electronic_receipt_invoice', function (require) {
                 }).then(function (orders) {
                     if (orders.length > 0 && orders[0]['invoice_id'] && orders[0]['invoice_id'][1]) {       
                         var invoice_id = orders[0]['invoice_id'][0];
-                        var invoice_number = orders[0]['invoice_id'][1].split(" ")[0];
+                        var invoice_number = orders[0]['invoice_id'][1].split(" ")[1];
                         self.pos.get_order()['invoice_number'] = invoice_number;
                         rpc.query({
 						     model: 'account.invoice',
@@ -80,9 +80,18 @@ odoo.define('pos_electronic_receipt_invoice', function (require) {
 						                                        ]],
 						}).then(function (invoices) {
 						    self.pos.get_order()['afip_auth_code'] = invoices[0]['afip_auth_code'];
-						    self.pos.get_order()['afip_qr_code'] = invoices[0]['afip_qr_code'];
+						    var afip_qr_code = invoices[0]['afip_qr_code'];
+						    var qrcode = new QRCode(afip_qr_code , {
+					            text: "http://jindo.dev.naver.com/collie",
+					            width: 100,
+					            height: 100,
+					            colorDark : "#000000",
+					            colorLight : "#ffffff",
+					            correctLevel : QRCode.CorrectLevel.H
+					        });
+					        self.pos.get_order()['afip_qr_code'] = qrcode.makeCode(afip_qr_code);
+							self.$('.pos-receipt-container').html(qweb.render('PosTicket', self.get_receipt_render_env()));
 						});
-						self.$('.pos-receipt-container').html(qweb.render('PosTicket', self.get_receipt_render_env()));
                     }
                     invoiced.resolve();
                 }).fail(function (type, error) {
