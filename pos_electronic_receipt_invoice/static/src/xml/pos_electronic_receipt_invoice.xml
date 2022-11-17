@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="point_of_sale.template" xml:space="preserve">
+    <t t-extend="PosTicket">
+        <t t-jquery="t[t-if*='receipt.header']" t-operation="before">
+            <t t-if="order.invoice_number and widget.pos.config.receipt_invoice_number">
+            	<div>------------------------------------------</div>
+                Invoice number: <t t-esc="order.invoice_number"/><br />
+                <t t-if="order.afip_auth_code and widget.pos.config.receipt_invoice_number">
+                	CAE number: <t t-esc="order.afip_auth_code"/><br />
+                </t>
+                <div>------------------------------------------</div>
+                <br />
+            </t>
+        </t>
+        <t t-jquery="t[t-if*='receipt.footer']" t-operation="after">
+        	<t t-if="order.afip_qr_code and widget.pos.config.receipt_invoice_number">
+        		<input id="text" type="text" t-att-value="order.afip_qr_code" style="display:none;"/>
+                <div id="qrcode" style="width:300px; height:300px;"></div>
+                <script type="text/javascript">
+                    var qrcode = new QRCode(document.getElementById("qrcode"), {
+                            width : 300,
+                            height : 300
+                    });
+
+                    function makeCode(){
+                            var elText = document.getElementById("text");
+                            qrcode.makeCode(elText.value);
+                    }
+                    makeCode();
+                </script>
+        	</t>
+        </t>
+    </t>
+
+    <t t-extend="XmlReceipt">
+        <t t-jquery="t[t-if*='receipt.cashier']" t-operation="before">
+            <t t-if="order.invoice_number and widget.pos.config.receipt_invoice_number">
+                <div>------------------------------------------</div>
+                Invoice Number: <t t-esc="order.invoice_number"/><br />
+                <t t-if="afip_auth_code and widget.pos.config.receipt_invoice_number">
+                	CAE number: <t t-esc="order.afip_auth_code"/><br />
+                </t>
+                <div>------------------------------------------</div>
+                <br />
+            </t>
+        </t>
+        <t t-jquery="t[t-if*='receipt.footer_xml']" t-operation="before">
+        	<t t-if="order.afip_qr_code and widget.pos.config.receipt_invoice_number">
+        		<input id="text" type="text" t-att-value="order.afip_qr_code" style="display:none;"/>
+                <div id="qrcode" style="width:300px; height:300px;"></div>
+                <script type="text/javascript">
+                    var qrcode = new QRCode(document.getElementById("qrcode"), {
+                            width : 300,
+                            height : 300
+                    });
+
+                    function makeCode(){
+                            var elText = document.getElementById("text");
+                            qrcode.makeCode(elText.value);
+                    }
+                    makeCode();
+                </script>
+        	</t>
+        </t>
+    </t>
+</templates>
