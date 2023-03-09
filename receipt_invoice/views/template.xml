@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- action report -->
+        <report
+        id="action_report_preprinted_report"
+        model="account.payment.group"
+        string="Receipt Invoice Duplicate"
+        report_type="qweb-pdf"
+        name="receipt_invoice.preprinted_report"
+        file="receipt_invoice.preprinted_report"
+        />
+    <!-- layout report -->
+        <template id="preprinted_report">
+            <t t-call="web.internal_layout">
+            <t t-foreach="docs" t-as="o">
+            <table class="table" style="margin-left:5%;width:90%;height:100%">
+                <tbody>
+                    <tr>
+                        <th class="" style="margin-left:5%;border:1px solid; width:50%">
+                        <table style="height:20%;width:100%;margin-left:10px;margin-top:-30px">
+                            <tr style="">
+                                <th style="text-align: start;width:50%;">
+                                    <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" style="height:60px;width:180px;"/><br/>
+                                    <span t-field="o.company_id.name"/><br/>
+                                    <span t-field="o.company_id.street"/><span t-field="o.company_id.zip"/><br/>
+                                    <span t-field="o.company_id.city"/><span t-field="o.company_id.state_id.name"/><br/>
+                                    <strong>TE: </strong><span t-field="o.company_id.phone"/><br/>
+                                    <strong>IVA: </strong><span t-field="o.company_id.afip_responsability_type_id.name"/><br/>
+                                
+                                
+                                </th>
+                                <th style="text-align: start;width:10%;">
+                                    <span style="font-size:50px" t-field="o.receiptbook_id.document_type_id.document_letter_id.name"/>
+                                </th>
+                                <th style="width:40%;text-align: start;margin-left:80px">
+                                    <span style="font-size:40px" t-field="o.receiptbook_id.document_type_id.report_name"/><br/>
+                                    <strong>N°: </strong><span t-field="o.document_number"/><br/>
+                                    <strong>Fecha: </strong><span t-field="o.payment_date"/><br/>
+                                </th>
+                            </tr>
+                        </table>
+                        <table style="width:100%;margin-bottom:50px;height:10%;border:1px solid;">
+                        <tr class="">
+                            <th class="">
+                                <div class="" t-if="o.partner_type">
+                                    <t t-if="o.partner_type == 'customer'">
+                                        <strong>Customer: </strong>
+                                    </t>
+                                    <t t-if="o.partner_type == 'supplier'">
+                                        <strong>Vendor: </strong>
+                                    </t>
+                                    <span t-field="o.partner_id"/>
+                                </div>
+                            </th>
+                            <th class="">
+                                <strong>Cond IVA: </strong><span t-field="o.partner_id.afip_responsability_type_id.name"/>
+                            </th>
+                        </tr>
+                            <th class="">
+                               <strong>Direccion: </strong><span t-field="o.partner_id.street"/>-<span t-field="o.partner_id.city"/>-<span t-field="o.partner_id.country_id"/>
+                            </th>
+                            <th class="">
+                                <strong>CUIT: </strong><span t-field="o.partner_id.main_id_number"/>
+                            </th>
+                        </table>
+                        
+                        <table class="table table-condensed" style="width:100%;border:1px solid;">
+                            <thead>
+                                <tr style="text-align:center;font-size:18px;margin-left:100px">
+                                    <th>Comprobante Imputados</th>
+                                </tr>
+                                <tr>
+                                    <th class=""></th>
+                                    <th>Fecha Venc.</th>
+                                    <th>Importe Original</th>
+                                    <th>Importe Imputado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.matched_move_line_ids" t-as="line">
+                                    <td><span t-field="line.move_id"/></td>
+                                    <td><span t-field="line.date_maturity"/></td>
+                                    <td><span t-field="line.balance"/></td>
+                                    <td><span t-field="line.payment_group_matched_amount"/></td>
+                                </tr>
+                            </tbody>
+                             <tr>
+                                <th colspan="4">total</th>
+                            </tr>
+
+                        </table>
+                        <table class="table table-condensed" style="width:100%;height:10%;margin-top:470px">
+                            <tbody>
+                                    <td class=""><span>OBSERVACIONES: <span t-field="o.notes"/> </span></td>
+                                    <td class="" style="border-top:1px solid;">Firma</td>
+                                    <td class="" style="border-top:1px solid;">Aclaracion</td>
+                            </tbody>
+                        </table>
+                        </th>
+                        <th class="" style="widht:2%"></th>
+                        <th class="" style="margin-left:5%;border:1px solid; width:50%">
+                            <table style="height:20%;width:100%;margin-left:10px;margin-top:-30px">
+                            <tr style="">
+                                <th style="text-align: start;width:50%;">
+                                    <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" style="height:60px;width:180px;"/><br/>
+                                    <span t-field="o.company_id.name"/><br/>
+                                    <span t-field="o.company_id.street"/><span t-field="o.company_id.zip"/><br/>
+                                    <span t-field="o.company_id.city"/><span t-field="o.company_id.state_id.name"/><br/>
+                                    <strong>TE: </strong><span t-field="o.company_id.phone"/><br/>
+                                    <strong>IVA: </strong><span t-field="o.company_id.afip_responsability_type_id.name"/><br/>
+                                
+                                
+                                </th>
+                                <th style="text-align: start;width:10%;">
+                                    <span style="font-size:50px" t-field="o.receiptbook_id.document_type_id.document_letter_id.name"/>
+                                </th>
+                                <th style="width:40%;text-align: start;margin-left:80px">
+                                    <span style="font-size:40px" t-field="o.receiptbook_id.document_type_id.report_name"/><br/>
+                                    <strong>N°: </strong><span t-field="o.document_number"/><br/>
+                                    <strong>Fecha: </strong><span t-field="o.payment_date"/><br/>
+                                </th>
+                            </tr>
+                        </table>
+                        <table style="width:100%;margin-bottom:50px;height:10%;border:1px solid;">
+                        <tr class="">
+                            <th class="">
+                                <div class="" t-if="o.partner_type">
+                                    <t t-if="o.partner_type == 'customer'">
+                                        <strong>Customer: </strong>
+                                    </t>
+                                    <t t-if="o.partner_type == 'supplier'">
+                                        <strong>Vendor: </strong>
+                                    </t>
+                                    <span t-field="o.partner_id"/>
+                                </div>
+                            </th>
+                            <th class="">
+                                <strong>Cond IVA: </strong><span t-field="o.partner_id.afip_responsability_type_id.name"/>
+                            </th>
+                        </tr>
+                            <th class="">
+                               <strong>Direccion: </strong><span t-field="o.partner_id.street"/>-<span t-field="o.partner_id.city"/>-<span t-field="o.partner_id.country_id"/>
+                            </th>
+                            <th class="">
+                                <strong>CUIT: </strong><span t-field="o.partner_id.main_id_number"/>
+                            </th>
+                        </table>
+                        
+                        <table class="table table-condensed" style="width:100%;border:1px solid;">
+                            <thead>
+                                <tr style="text-align:center;font-size:18px;margin-left:100px">
+                                    <th>Comprobante Imputados</th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th>Fecha Venc.</th>
+                                    <th>Importe Original</th>
+                                    <th>Importe Imputado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.matched_move_line_ids" t-as="line">
+                                    <td><span t-field="line.move_id"/></td>
+                                    <td><span t-field="line.date_maturity"/></td>
+                                    <td><span t-field="line.balance"/></td>
+                                    <td><span t-field="line.payment_group_matched_amount"/></td>
+                                </tr>
+                            </tbody>
+                             <tr>
+                                <th colspan="4">total</th>
+                            </tr>
+
+                        </table>
+                        <table class="table table-condensed" style="width:100%;height:10%;margin-top:470px">
+                            <tr>
+                                <td class=""><span>OBSERVACIONES: <span t-field="o.notes"/> </span></td>
+                                <td class="" style="border-top:1px solid;">Firma</td>
+                                <td class="" style="border-top:1px solid;">Aclaracion</td>
+                            </tr>
+                        </table>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+            </t>
+            </t>
+        </template>
+
+    <!-- paper format -->
+        <record id="papel_format_receipt_invoice" model="report.paperformat">
+            <field name="name">Dispatch Report Paper Format</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">12</field>
+            <field name="margin_bottom">8</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">10</field>
+            <field name="dpi">110</field>
+        </record>
+        <record id="action_report_preprinted_report" model="ir.actions.report">
+            <field name="paperformat_id" ref="papel_format_receipt_invoice" />
+        </record>
+
+</odoo>
