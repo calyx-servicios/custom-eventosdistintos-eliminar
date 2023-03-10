@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+       <record id="account_payment_group_view_form_inherit" model="ir.ui.view">
+        <field name="name">account.payment.group.view.form.inherit</field>
+        <field name="model">account.payment.group</field>
+        <field name="inherit_id" ref="account_payment_group.view_account_payment_group_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position='inside'>
+                <button name ='create_template_report' 
+                    string = "Print Receipt Duplicate" 
+                    type='object'
+                />
+            </xpath>
+        </field>
+        </record>
+</odoo>
