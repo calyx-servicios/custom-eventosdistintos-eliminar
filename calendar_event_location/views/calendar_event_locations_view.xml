@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="calendar_event_location_tree_view" model="ir.ui.view">
+        <field name="name">calendar.event.location.tree.view</field>
+        <field name="model">calendar.event.location</field>
+        <field name="type">tree</field>
+        <field name="priority" eval="1"/>
+        <field name="arch" type="xml">
+            <tree string="Calendar Locations">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="calendar_event_location_form_view" model="ir.ui.view">
+        <field name="name">calendar.event.location.form.view</field>
+        <field name="model">calendar.event.location</field>
+        <field name="type">form</field>
+        <field name="priority" eval="1"/>
+        <field name="arch" type="xml">
+            <form string="calendar location">
+            <sheet>
+                <group>
+                    <group col="2">
+                        <field name="name"/>
+                    </group>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="open_view_calendar_event_locations">
+        <field name="name">Calendars Locations</field>
+        <field name="res_model">calendar.event.location</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="calendar_event_location_tree_view"/>
+    </record>
+
+    <menuitem action="open_view_calendar_event_locations" id="menu_calendar_locations" name="Calendars Locations" parent="calendar.mail_menu_calendar" groups="base.group_user" sequence="2"/>
+</odoo>
