@@ -22,7 +22,7 @@
         <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='campaign_id']" position="attributes">
-                <attribute name="attrs">{'required':[('customer','=',True)]}</attribute>
+                <attribute name="required">1</attribute>
             </xpath>
         </field>
         </record>
