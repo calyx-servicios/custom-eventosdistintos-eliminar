@@ -18,7 +18,7 @@
     'development_status': 'Production/Stable',
 
     # any module necessary for this one to work correctly
-    'depends': ['sale'],
+    'depends': ['delivery','sale'],
 
     # always loaded
     'data': [

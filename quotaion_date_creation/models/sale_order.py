@@ -9,4 +9,5 @@ class SaleOrder(models.Model):
     
     @api.onchange('requested_date')
     def _requested_date_in_notes(self):
-        self.note = ('Fecha Solicitada: %s \n') % self.requested_date + self.template_id.note 
+        if self.requested_date and self.template_id and self.template_id.note:
+            self.note = ('Fecha Solicitada: %s \n') % self.requested_date + self.template_id.note 
