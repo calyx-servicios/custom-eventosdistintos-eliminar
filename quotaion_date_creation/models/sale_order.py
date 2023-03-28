@@ -1,6 +1,5 @@
 from odoo import models, fields, api, _
-from odoo.exceptions import ValidationError
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
@@ -10,4 +9,5 @@ class SaleOrder(models.Model):
     @api.onchange('requested_date')
     def _requested_date_in_notes(self):
         if self.requested_date and self.template_id and self.template_id.note:
-            self.note = ('FECHA SOLICITADA: %s \n') % (self.requested_date - timedelta(hours=3)) + self.template_id.note 
+            date = datetime.strptime(self.requested_date, '%Y-%m-%d %H:%M:%S') - timedelta(hours=3)
+            self.note = ('FECHA SOLICITADA: %s \n') % date + self.template_id.note 
